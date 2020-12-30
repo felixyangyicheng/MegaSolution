@@ -1,0 +1,113 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+/*Added value*/
+:root {
+    /*light theme*/
+    --background: white;
+    --font-color: black;
+    --highlight: #f7f7f7;
+    --highlight-2: #e2e3e5;
+    --link: #0366d6;
+}
+/*Added value*/
+.dark-mode {
+    --background: #2d2d2d;
+    --font-color: white;
+    --highlight: #393939;
+    --highlight-2: #414648;
+    --link: #3ca4ff;
+}
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+/*Added value*/
+a, .btn-link {
+    color: var(--link);
+}
+/*Added value*/
+.alert-secondary {
+    background-color: var(--highlight-2);
+    color: var(--font-color);
+}
+/*Added value*/
+.table {
+    color: var(--font-color);
+}
+/*Added value*/
+div.main {
+    background-color: var(--background);
+    color: var(--font-color);
+}
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+/*Added value*/
+.imageThumbnail {
+    height: 256px;
+    width: 256px;
+}
+/*Added value*/
+.spinner {
+    border: 16px solid silver;
+    border-top: 16px solid #337AB7;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 700ms linear infinite;
+    top: 40%;
+    left: 55%;
+    position: absolute;
+}
+/*Added value*/
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+/*Added value*/
+.HideFooter {
+    display: none;
+}
