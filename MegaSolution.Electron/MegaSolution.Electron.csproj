@@ -36,6 +36,7 @@
     <Folder Include="Pages\ProfessionSectors\" />
     <Folder Include="Pages\Professions\" />
     <Folder Include="Pages\Offers\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>
