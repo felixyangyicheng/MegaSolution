@@ -6,27 +6,26 @@ using System.Threading.Tasks;
 using MegaSolution.Electron.Contracts;
 using MegaSolution.Electron.Models;
 
+
 namespace MegaSolution.Electron.Pages.Users
 {
-    public class RegistrerBase:ComponentBase
+    public class LoginBase:ComponentBase
     {
-
         [Inject]
         public IAuthenticationRepository _authRepo { get; set; }
         [Inject]
-        public NavigationManager _navMan { get; set; }
-
-        protected RegistrationModel Model = new RegistrationModel();
+        public NavigationManager _navManager { get; set; }
+        protected LoginModel Model = new LoginModel();
         protected bool response = true;
-
-        protected async Task HandleRegistration()
+        protected async Task HandleLogin()
         {
-            response = await _authRepo.Register(Model);
+            response = await _authRepo.Login(Model);
 
             if (response)
             {
-                _navMan.NavigateTo("/login");
+                _navManager.NavigateTo("/counter");
             }
+
         }
     }
 }
