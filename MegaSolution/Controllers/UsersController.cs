@@ -70,6 +70,41 @@ namespace MegaSolution.Controllers
             }
         }
         /// <summary>
+        /// Registre a user as administrator
+        /// </summary>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
+
+        [Route("adminregister")]
+        [HttpPost]
+        public async Task<IActionResult> RegisterAsAdmin([FromBody] UserDTO userDTO)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                var username = userDTO.EmailAddress;
+                var password = userDTO.Password;
+                _logger.LogInfo($"{location}: Registration Attempt for {username} ");
+                var user = new IdentityUser { Email = username, UserName = username };
+                var result = await _userManager.CreateAsync(user, password);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        _logger.LogError($"{location}: {error.Code} {error.Description}");
+                    }
+                    return InternalError($"{location}: {username} User Registration Attempt Failed");
+                }
+                await _userManager.AddToRoleAsync(user, "Administrator");
+                return Created("login", new { result.Succeeded });
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+        }
+        /// <summary>
         /// User Login Endpoint
         /// </summary>
         /// <param name="userDTO"></param>
