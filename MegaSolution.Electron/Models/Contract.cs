@@ -10,7 +10,7 @@ namespace MegaSolution.Electron.Models
     {
         public int ContractId { get; set; }
         [Required]
-        public DateTime ContractBegins { get; set; }
+        public DateTime ContractBegins { get; set; } = DateTime.Now;
         [Required]
         public int ContractDuration { get; set; }
         [Required]

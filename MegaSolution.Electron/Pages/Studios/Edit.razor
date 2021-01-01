@@ -1,0 +1,71 @@
+﻿@page "/studios/edit/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits EditBase
+
+<h3 class="card-title">Modifier studio</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement du studio pour la modification" />
+}
+else
+{
+<EditForm Model="Model" OnValidSubmit="EditStudio">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="name">Libellé</label>
+        <InputText @bind-Value="Model.StudioName" class="form-control" id="name" />
+    </div>
+    <div class="form-group">
+        <label for="siret">Siret</label>
+        <InputNumber @bind-Value="Model.Siret" class="form-control" id="siret" />
+    </div>
+    <div class="form-group">
+        <label for="address">Adresse</label>
+        <InputTextArea @bind-Value="Model.Address" class="form-control" id="address" />
+    </div>
+    <div class="form-group">
+        <label for="number">Numéro d'adresse</label>
+        <InputNumber @bind-Value="Model.AddressNumber" class="form-control" id="number" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Numéro téléphone</label>
+        <InputText @bind-Value="Model.Phone" class="form-control" id="phone" />
+    </div>
+    <div class="form-group">
+        <label for="mail">Email</label>
+        <InputText @bind-Value="Model.Email" class="form-control" id="mail" />
+    </div>
+    <div class="form-group">
+        <label for="mailC">Confirmation Email</label>
+        <InputText @bind-Value="Model.EmailConfirm" class="form-control" id="mailC" />
+    </div>
+    <div class="form-group">
+        <label for="post">Code postal</label>
+        <InputText @bind-Value="Model.PostCode" class="form-control" id="post" />
+    </div>
+    <div class="form-group">
+        <label for="city">Commune</label>
+        <InputText @bind-Value="Model.City" class="form-control" id="city" />
+    </div>
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Submit Changes
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Back To List
+    </button>
+</EditForm>
+}

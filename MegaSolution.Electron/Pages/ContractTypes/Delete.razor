@@ -1,5 +1,65 @@
-﻿<h3>Delete</h3>
-
-@code {
-
+﻿@page "/contracttypes/delete/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits DeleteBase
+<h3 class="card-title">Êtes-vous sûr de vouloir supprimer cet enregistrement?</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Un problème est survenu lors de l'opération" />
 }
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du type de contrat" />
+}
+else
+{
+<div class="col-md-4">
+    <table class="table table-responsive">
+        <tr>
+            <td>Libéllé</td>
+            <td>@Model.ContractTypeName</td>
+        </tr>
+
+    </table>
+    <br />
+    @if (Model.Contracts == null || Model.Contracts.Count < 1)
+    {
+        <div class="alert alert-dismissible alert-secondary">
+            Aucun contrat est lié à ce type
+        </div>
+    }
+    else
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <h4>Offres</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach (var contract in Model.Contracts)
+                {
+                    <li class="list-group-item">@contract.ContractReference - @contract.ContractBegins</li>
+                }
+            </ul>
+        </div>
+    }
+
+</div>
+}
+<br />
+
+<button @onclick="DeleteContractType" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Delete Author
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Back To List
+</button>
+

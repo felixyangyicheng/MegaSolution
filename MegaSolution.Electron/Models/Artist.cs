@@ -29,7 +29,7 @@ namespace MegaSolution.Electron.Models
         public string Phone { get; set; }
 
         [Required]
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.Now;
         public string ArtistName { get; set; }
         public Gender Gender { get; set; }
         public string CV { get; set; }

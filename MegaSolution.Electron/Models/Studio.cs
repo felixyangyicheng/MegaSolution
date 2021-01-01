@@ -20,7 +20,11 @@ namespace MegaSolution.Electron.Models
         public string Phone { get; set; }
         [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
+        [Display(Name = "Confirmer email")]
+        [Compare("Email", ErrorMessage = "Le champs Email et le champs Confirmation doivent être identique.")]
+        public string EmailConfirm { get; set; }
         [Required]
         public string StudioName { get; set; }
         [Required]

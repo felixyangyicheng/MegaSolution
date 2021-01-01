@@ -36,7 +36,8 @@ else
                     <th>Durée</th>
                     <th>Début</th>
                     <th>Type de contrat</th>
-                    <th></th>
+                    <th>Opération</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +54,12 @@ else
                             <img src="uploads/@contract.ContractPdfFile" class="img-thumbnail" style="height:100px;width:100px" />
                         }
                     </td>
-                
+
                     <td>@contract.ContractReference</td>
                     <td>@contract.ContractDuration</td>
+                    <td>@contract.ContractBegins</td>
                     <td>@contract.ContractType.ContractTypeName</td>
-                   
+
                     <td>
                         <a href="/contracts/view/@contract.ContractId" class="btn btn-primary">
                             <span class="oi oi-book"></span>

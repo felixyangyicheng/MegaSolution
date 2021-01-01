@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MegaSolution.Electron.Pages.ContractTypes
+namespace MegaSolution.Electron.Pages.Studios
 {
-    public class EditBase : ComponentBase
+    public class DeleteBase : ComponentBase
     {
         [Inject]
-        public IContractTypeRepository _repo { get; set; }
+        public IStudioRepository _repo { get; set; }
         [Inject]
         public NavigationManager _navManager { get; set; }
         [Inject]
@@ -21,20 +21,22 @@ namespace MegaSolution.Electron.Pages.ContractTypes
         [Parameter]
         public string Id { get; set; }
 
-        protected    ContractType Model = new ContractType();
+        protected Studio Model = new Studio();
         protected bool isSuccess = true;
+
         protected override async Task OnInitializedAsync()
         {
             int id = Convert.ToInt32(Id);
-            Model = await _repo.Get(EndPoints.ContractTypeEndpoint, id);
+            Model = await _repo.Get(EndPoints.StudioEndpoint, id);
         }
 
-        protected async Task EditContractType()
+        protected async Task DeleteStudio()
         {
-            isSuccess = await _repo.Update(EndPoints.ContractTypeEndpoint, Model, Model.ContractTypeId);
+            
+            isSuccess = await _repo.Delete(EndPoints.StudioEndpoint, Model.StudioId);
             if (isSuccess)
             {
-                _toastService.ShowWarning("Type de contrat mis à jour avec succès", "");
+                _toastService.ShowError("Studio supprimé avec succès", "");
                 BackToList();
             }
 
@@ -42,7 +44,7 @@ namespace MegaSolution.Electron.Pages.ContractTypes
 
         protected void BackToList()
         {
-            _navManager.NavigateTo("/contracttypes/");
+            _navManager.NavigateTo("/studios/");
         }
     }
 }

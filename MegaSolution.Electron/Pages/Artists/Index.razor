@@ -29,14 +29,15 @@ else
             <thead>
                 <tr>
                     <th></th>
-                    <td>Id</td>
-                    <td>Genre</td>
+
+                    <th>Id</th>
+                    <th>Genre</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
                     <th>Date de naissance</th>
                     <th>Pseudo</th>
-                  
+                    <th>Opération</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,8 +55,8 @@ else
                             <img src="~/uploads/@artist.ProfilePhoto" class="img-thumbnail" style="height:100px;width:100px" />
                         }
                     </td>
-                    <td>@artist.Gender</td>
                     <td>@artist.ArtistId</td>
+                    <td>@artist.Gender</td>
                     <td>@artist.LastName</td>
                     <td>@artist.FirstName</td>
                     <td>@artist.Email</td>
