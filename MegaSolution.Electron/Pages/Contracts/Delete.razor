@@ -1,0 +1,82 @@
+﻿@page "/contracts/delete/{Id}"
+@inherits DeleteBase
+@attribute [Authorize(Roles = "Administrator")]
+
+
+<h3>Êtes-vous sûr de vouloir supprimer cet enregistrement?</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du contrat" />
+}
+else
+{
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <strong>Référence</strong>
+                    </td>
+                    <td>@Model.ContractReference</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>PDF</strong>
+                    </td>
+                    <td>
+                        @if (Model.ContractPdfFile == null)
+                        {
+                            <img src="uploads/no-photo-icon.png" style="height:300px; width:300px" />
+                        }
+                        else
+                        {
+                            <img src="uploads/@Model.ContractPdfFile" style="height:300px; width:300px" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Début</strong>
+                    </td>
+                    <td>@Model.ContractBegins</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Durée</strong>
+                    </td>
+                    <td>@Model.ContractDuration</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Type de contrat</strong>
+                    </td>
+                    <td>@Model.ContractType.ContractTypeName</td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+}
+
+<button @onclick="DeleteContract" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Supprimer contrat
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>

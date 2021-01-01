@@ -25,6 +25,7 @@ namespace MegaSolution.Repositories
 
         public async Task<bool> Delete(ContractType entity)
         {
+         
             _db.ContractTypes.Remove(entity);
             return await Save();
         }

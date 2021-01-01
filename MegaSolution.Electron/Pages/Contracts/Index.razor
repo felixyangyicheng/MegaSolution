@@ -1,0 +1,79 @@
+﻿@page "/contracts/"
+@attribute [Authorize]
+@inherits IndexBase
+
+<h3>Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des contrats" />
+}
+else
+{
+    <AuthorizeView Roles="Administrator">
+        <a href="/books/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+            Créer contrat
+        </a>
+    </AuthorizeView>
+
+    <br />
+    <br />
+    <br />
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a pas de contrat.
+                         Cliquez sur «Créer un contrat» pour commencer " />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Référence</th>
+                    <th>Durée</th>
+                    <th>Début</th>
+                    <th>Type de contrat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contract in Model)
+                {
+                <tr>
+                    <td>
+                        @if (contract.ContractPdfFile == null)
+                        {
+                            <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
+                        }
+                        else
+                        {
+                            <img src="uploads/@contract.ContractPdfFile" class="img-thumbnail" style="height:100px;width:100px" />
+                        }
+                    </td>
+                
+                    <td>@contract.ContractReference</td>
+                    <td>@contract.ContractDuration</td>
+                    <td>@contract.ContractType.ContractTypeName</td>
+                   
+                    <td>
+                        <a href="/contracts/view/@contract.ContractId" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <AuthorizeView Roles="Administrator">
+                            <a href="/contracts/edit/@contract.ContractId" class="btn btn-warning">
+                                <span class="oi oi-pencil"></span>
+                            </a>
+                            <a href="/contracts/delete/@contract.ContractId" class="btn btn-danger">
+                                <span class="oi oi-delete"></span>
+                            </a>
+                        </AuthorizeView>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
