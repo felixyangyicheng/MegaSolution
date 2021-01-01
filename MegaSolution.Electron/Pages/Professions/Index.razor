@@ -1,0 +1,60 @@
+﻿@page "/professions/"
+@inherits IndexBase
+
+
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des professions" />
+}
+else
+{
+    <AuthorizeView Roles="Administrator">
+        <a href="/professions/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+            Créer une profession
+        </a>
+        <br />
+    </AuthorizeView>
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucune profession.
+                         Cliquez sur «Créer une profession» pour commencer" />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+                    <th>Opération</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var profession in Model)
+                {
+                    <tr>
+                        <td>@profession.ProfessionId</td>
+                        <td>@profession.ProfessionName</td>
+                        <td>
+                            <a href="/professions/view/@profession.ProfessionId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/professions/edit/@profession.ProfessionId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/professions/delete/@profession.ProfessionId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

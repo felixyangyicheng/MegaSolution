@@ -1,0 +1,85 @@
+﻿@page "/offers/delete/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits DeleteBase
+
+<h3 class="card-title">Êtes-vous sûr de vouloir supprimer cet enregistrement?</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Un problème est survenu lors de l'opération" />
+}
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails de l'offre" />
+}
+else
+{
+    <div class="col-md-4">
+        <table class="table table-responsive">
+            <tr>
+                <td>Id</td>
+                <td>@Model.OfferId</td>
+            </tr>
+            <tr>
+                <td>Titre</td>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td>Date de publication</td>
+                <td>@Model.PublishDate</td>
+            </tr>
+            <tr>
+                <td>Durée d'offre</td>
+                <td>@Model.OfferDuration</td>
+            </tr>
+            <tr>
+                <td>Places</td>
+                <td>@Model.AvailablePlace</td>
+            </tr>
+            <tr>
+                <td>Description d'offre</td>
+                <td>@Model.OfferDescription</td>
+            </tr>
+            <tr>
+                <td>Description de profil</td>
+                <td>@Model.ProfilDescription</td>
+            </tr>
+            <tr>
+                <td>localisation</td>
+                <td>@Model.Location</td>
+            </tr>
+            <tr>
+                <td>Référence</td>
+                <td>@Model.OfferReference</td>
+            </tr>
+            <tr>
+                <td>Studio</td>
+                <td>@Model.Studio.StudioName</td>
+            </tr>
+            <tr>
+                <td>Profession</td>
+                <td>@Model.Profession.ProfessionName</td>
+            </tr>
+        </table>
+        <br />
+      
+
+    </div>
+}
+<br />
+
+<button @onclick="DeleteOffer" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Supprimer offre
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>

@@ -1,4 +1,4 @@
-﻿@page "/professionsectors/delete/{Id}"
+﻿@page "/professions/delete/{Id}"
 @attribute [Authorize(Roles = "Administrator")]
 @inherits DeleteBase
 
@@ -16,27 +16,27 @@
 }
 else if (Model == null)
 {
-    <LoadingMessage Message="Chargement des détails du sector de profession" />
+    <LoadingMessage Message="Chargement des détails de la profession" />
 }
 else
 {
     <div class="col-md-4">
         <table class="table table-responsive">
             <tr>
-                <td>Id</td>
-                <td>@Model.ProfessionSectorId</td>
+                <td>ID</td>
+                <td>@Model.ProfessionId</td>
             </tr>
             <tr>
                 <td>Libellé</td>
-                <td>@Model.SectorName</td>
+                <td>@Model.ProfessionName</td>
             </tr>
-          
+           
         </table>
         <br />
-        @if (Model.Professions == null || Model.Professions.Count < 1)
+        @if (Model.Offers == null || Model.Offers.Count < 1)
         {
             <div class="alert alert-dismissible alert-secondary">
-                Aucune profession est lié à ce sector
+                Aucune offre est proposée par ce studio
             </div>
         }
         else
@@ -46,9 +46,9 @@ else
                     <h4>Offres</h4>
                 </div>
                 <ul class="list-group list-group-flush">
-                    @foreach (var profession in Model.Professions)
+                    @foreach (var offer in Model.Offers)
                     {
-                        <li class="list-group-item">@profession.ProfessionId - @profession.ProfessionName </li>
+                        <li class="list-group-item">@offer.Title - @offer.OfferReference - @offer.PublishDate </li>
                     }
                 </ul>
             </div>
@@ -58,12 +58,12 @@ else
 }
 <br />
 
-<button @onclick="DeleteSector" class="btn btn-danger">
+<button @onclick="DeleteProfession" class="btn btn-danger">
     <span class="oi oi-delete"></span>
-    Supprimer secteur de profession
+    Supprimer profession
 </button>
 
 <button @onclick="BackToList" class="btn btn-outline-secondary">
     <span class="oi oi-media-skip-backward"></span>
-    Revenir sr la liste
+    Revenir sur la liste
 </button>

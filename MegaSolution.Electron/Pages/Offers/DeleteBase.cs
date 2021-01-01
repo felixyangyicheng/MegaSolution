@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MegaSolution.Electron.Pages.ProfessionSectors
+namespace MegaSolution.Electron.Pages.Offers
 {
     public class DeleteBase : ComponentBase
     {
         [Inject]
-        public IProfessionSectorRepository _repo { get; set; }
+        public IOfferRepository _repo { get; set; }
         [Inject]
         public NavigationManager _navManager { get; set; }
         [Inject]
@@ -21,22 +21,22 @@ namespace MegaSolution.Electron.Pages.ProfessionSectors
         [Parameter]
         public string Id { get; set; }
 
-        protected ProfessionSector Model = new ProfessionSector();
+        protected Offer Model = new Offer();
         protected bool isSuccess = true;
 
         protected override async Task OnInitializedAsync()
         {
             int id = Convert.ToInt32(Id);
-            Model = await _repo.Get(EndPoints.ProfessionSectorEndpoint, id);
+            Model = await _repo.Get(EndPoints.OfferEndpoint, id);
         }
 
-        protected async Task DeleteSector()
+        protected async Task DeleteOffer()
         {
 
-            isSuccess = await _repo.Delete(EndPoints.ProfessionSectorEndpoint, Model.ProfessionSectorId);
+            isSuccess = await _repo.Delete(EndPoints.OfferEndpoint, Model.OfferId);
             if (isSuccess)
             {
-                _toastService.ShowError("Secteur supprimé avec succès", "");
+                _toastService.ShowError("Offre supprimée avec succès", "");
                 BackToList();
             }
 
@@ -44,7 +44,7 @@ namespace MegaSolution.Electron.Pages.ProfessionSectors
 
         protected void BackToList()
         {
-            _navManager.NavigateTo("/professionsectors/");
+            _navManager.NavigateTo("/offers/");
         }
     }
 }

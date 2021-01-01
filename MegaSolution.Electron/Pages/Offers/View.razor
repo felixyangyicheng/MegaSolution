@@ -1,0 +1,101 @@
+﻿@page "/offers/view/{Id}"
+@inherits ViewBase
+
+<h3>Afficher les détails de l'offre</h3>
+<hr />
+<br />
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails de l'offre" />
+}
+else
+{
+    _toastService.ShowInfo($"Vous êtes sur l'offre {Model.OfferReference}", "");
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <strong>Référence</strong>
+                    </td>
+                    <td>@Model.OfferReference</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Titre</strong>
+                    </td>
+                    <td>
+                        @Model.Title
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Date de publication</strong>
+                    </td>
+                    <td>@Model.PublishDate</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Durée(jour)</strong>
+                    </td>
+                    <td>@Model.OfferDuration</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Numbre de place</strong>
+                    </td>
+                    <td>@Model.AvailablePlace</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Description d'offre</strong>
+                    </td>
+                    <td>@Model.OfferDescription</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Description de profil</strong>
+                    </td>
+                    <td>@Model.ProfilDescription</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Localisation</strong>
+                    </td>
+                    <td>@Model.Location</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Studio</strong>
+                    </td>
+                    <td>@Model.Studio.StudioName</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Profession</strong>
+                    </td>
+                    <td>@Model.Profession.ProfessionName</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+}
+
+<button @onclick="GoToEdit" class="btn btn-outline-warning">
+    <span class="oi oi-pencil"></span>
+    Modifier offre
+</button>
+<button @onclick="GoToDelete" class="btn btn-outline-danger">
+    <span class="oi oi-circle-x"></span>
+    Supprimer offre
+</button>
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>
