@@ -11,13 +11,19 @@ namespace MegaSolution.Electron.Models
         public int ArtistId { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 2)]
+        [Display(Name = "Nom")]
         public string FirstName { get; set; }
+        [Required]
         [StringLength(100, MinimumLength = 2)]
+        [Display(Name = "Prénom")]
         public string LastName { get; set; }
         [Required]
         [EmailAddress]
-
+        [Display(Name = "Email")]
         public string Email { get; set; }
+        [Display(Name = "Confirmer email")]
+        [Compare("Email", ErrorMessage = "Le champs Email et le champs Confirmation doivent être identique.")]
+        public string EmailConfirm { get; set; }
         public string ProfilePhoto { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

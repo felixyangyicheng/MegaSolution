@@ -1,0 +1,92 @@
+﻿@page  "/artists/"
+@inherits IndexBase
+@attribute [Authorize]
+
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement en cours des artists" />
+}
+else
+{
+    <AuthorizeView Roles="Administrator, Customer">
+        <a href="/artists/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+           Créer artiste
+        </a>
+    </AuthorizeView>
+
+    <br />
+    <br />
+    <br />
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a pas d'artiste.
+                         Cliquez sur 'Créer artiste' pour commencer " />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th></th>
+                    <td>Id</td>
+                    <td>Genre</td>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Date de naissance</th>
+                    <th>Pseudo</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var artist in Model)
+                {
+                <tr>
+                    <td>
+                        @if (artist.ProfilePhoto == null)
+                        {
+
+                            <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
+                        }
+                        else
+                        {
+                            <img src="~/uploads/@artist.ProfilePhoto" class="img-thumbnail" style="height:100px;width:100px" />
+                        }
+                    </td>
+                    <td>@artist.Gender</td>
+                    <td>@artist.ArtistId</td>
+                    <td>@artist.LastName</td>
+                    <td>@artist.FirstName</td>
+                    <td>@artist.Email</td>
+                    <td>@artist.BirthDate</td>
+                    <td>
+                        @if (artist.ArtistName == null)
+                        {
+                            <span class="text-muted">Non renseigné</span>
+                        }
+                        else
+                        {
+                            <span>@artist.ArtistName </span>
+                        }
+                    </td>
+                
+                    <td>
+                        <a href="/artists/view/@artist.ArtistId" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <AuthorizeView Roles="Administrator">
+                            <a href="/artists/edit/@artist.ArtistId" class="btn btn-warning">
+                                <span class="oi oi-pencil"></span>
+                            </a>
+                            <a href="/artists/delete/@artist.ArtistId" class="btn btn-danger">
+                                <span class="oi oi-delete"></span>
+                            </a>
+                        </AuthorizeView>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

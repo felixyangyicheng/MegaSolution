@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Artists\" />
     <Folder Include="Pages\Contracts\" />
     <Folder Include="Pages\ContractTypes\" />
     <Folder Include="Pages\DiffusionPartners\" />

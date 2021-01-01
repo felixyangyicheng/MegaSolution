@@ -1,0 +1,134 @@
+﻿@page "/artists/delete/{Id}"
+@inherits DeleteBase
+
+
+<h3>Êtes-vous sûr de vouloir supprimer cet enregistrement?</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails des artistes" />
+}
+else
+{
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <strong>Prénom</strong>
+                    </td>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Nom</strong>
+                    </td>
+                    <td>@Model.LastName</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Email</strong>
+                    </td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Sexe</strong>
+                    </td>
+                    <td>@Model.Gender</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Date de naissance</strong>
+                    </td>
+                    <td>@Model.BirthDate</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Adresse</strong>
+                    </td>
+                    <td>
+                        @if (Model.Address == null)
+                        {
+                            <span class="text-muted">Non renseigné</span>
+                        }
+                        else
+                        {
+                            <p>@Model.Address</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Téléphone</strong>
+                    </td>
+                    <td>
+                        @if (Model.Phone == null)
+                        {
+                            <span class="text-muted">Non renseigné</span>
+                        }
+                        else
+                        {
+                            <p>@Model.Phone</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Pseudo</strong>
+                    </td>
+                    <td>
+                        @if (Model.ArtistName == null)
+                        {
+                            <span class="text-muted">Non renseigné</span>
+                        }
+                        else
+                        {
+                            <p>@Model.ArtistName</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>CV</strong>
+                    </td>
+                    <td>
+                        @if (Model.CV == null)
+                        {
+                            <span class="text-muted">Non renseigné</span>
+                        }
+                        else
+                        {
+                            <p>@Model.CV</p>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <img src="uploads/@Model.ProfilePhoto" style="height:300px; width:300px" />
+           
+        </div>
+    </div>
+}
+
+<button @onclick="DeleteArtist" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Supprimer l'artiste
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revevir sur la liste
+</button>
