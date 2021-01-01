@@ -12,7 +12,7 @@ namespace MegaSolution.Electron.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public DateTime PublishDate { get; set; }
+        public DateTime PublishDate { get; set; } = DateTime.Now;
         [Required]
         public int OfferDuration { get; set; }
         [Required]
