@@ -1,0 +1,67 @@
+﻿@page "/professionsectors/view/{Id}"
+@inherits ViewBase
+
+<h3>Afficher les détails du secteur</h3>
+<hr />
+<br />
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du secteur" />
+}
+else
+{
+    _toastService.ShowInfo($"Vous êtes sur le contrat {Model.SectorName}", "");
+
+    <div class="col-md-4">
+
+        <table class="table table-responsive">
+            <tr>
+                <td>
+                    <strong>Libellé</strong>
+                </td>
+                <td>@Model.SectorName</td>
+            </tr>
+            
+        </table>
+        <br />
+        @if (Model.Professions == null || Model.Professions.Count < 1)
+        {
+    <div class="alert alert-dismissible alert-secondary">
+        Aucune Professions est liée à ce sector
+    </div>
+        }
+        else
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    <h4>professions</h4>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var offer in Model.Professions)
+                    {
+                        <li class="list-group-item">@offer.ProfessionName</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+
+}
+
+<button @onclick="GoToEdit" class="btn btn-outline-warning">
+    <span class="oi oi-pencil"></span>
+    Modifier secteur
+</button>
+<button @onclick="GoToDelete" class="btn btn-outline-danger">
+    <span class="oi oi-circle-x"></span>
+    Supprimer secteur
+</button>
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>
