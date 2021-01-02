@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\DiffusionPartners\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 

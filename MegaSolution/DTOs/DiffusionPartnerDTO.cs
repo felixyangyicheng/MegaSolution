@@ -17,7 +17,11 @@ namespace MegaSolution.DTOs
         public int AddressNumber { get; set; }
     
         public string Phone { get; set; }
-    
+   
+        public string Email { get; set; }
+     
+        public string Password { get; set; }
+
         public string DiffsionPartnerName { get; set; }
   
         public string PostCode { get; set; }
@@ -36,6 +40,13 @@ namespace MegaSolution.DTOs
         public int AddressNumber { get; set; }
         [Required]
         public string Phone { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(15, ErrorMessage = "Your Password is limited to {2} to {1} characters", MinimumLength = 6)]
+        public string Password { get; set; }
         [Required]
         public string DiffusionPartnerName { get; set; }
         [Required]
@@ -56,6 +67,13 @@ namespace MegaSolution.DTOs
         public int AddressNumber { get; set; }
         [Required]
         public string Phone { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(15, ErrorMessage = "Your Password is limited to {2} to {1} characters", MinimumLength = 6)]
+        public string Password { get; set; }
         [Required]
         public string DiffusionPartnerName { get; set; }
         [Required]
