@@ -2,10 +2,12 @@
 
 namespace MegaSolution.Migrations
 {
-    public partial class diffusionPartner_password : Migration
+    public partial class PartnerEmailPassword : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+         
+
             migrationBuilder.AddColumn<string>(
                 name: "Email",
                 table: "DiffusionPartners",
@@ -24,6 +26,8 @@ namespace MegaSolution.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+      
+
             migrationBuilder.DropColumn(
                 name: "Email",
                 table: "DiffusionPartners");

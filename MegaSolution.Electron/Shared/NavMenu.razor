@@ -17,25 +17,86 @@
                 <span class="oi oi-plus" aria-hidden="true"></span> Counter
             </NavLink>
         </li>
-     
+
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="Registrer">
-                <span class="oi-plus" aria-hidden="true"></span> S'inscrire
+                <span class="oi oi-target" aria-hidden="true"></span> S'inscrire
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="logout">
-                <span class="oi oi-arrow-circle-left" aria-hidden="true"></span> Se déconnecter
+                <span class="oi oi-account-logout" aria-hidden="true"></span> Se déconnecter
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="login">
-                <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Se connecter
+                <span class="oi oi-account-login" aria-hidden="true"></span> Se connecter
             </NavLink>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="login">
-                <span class="oi-wrench" aria-hidden="true"></span> Administrer
+                <span class="oi oi-wrench" aria-hidden="true"></span> Administrer
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="artists">
+                <span class="oi oi-people" aria-hidden="true"></span> Artists
+            </NavLink>
+        
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubmenuContract=!expandSubmenuContract">
+                <span class="oi oi-document" aria-hidden="true"></span> Contrats
+            </NavLink>
+            @if (expandSubmenuContract)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="expand-menu" href="contracts">
+                            <span class="oi oi-file" aria-hidden="true"></span> liste des contrats
+                        </NavLink>
+                        <NavLink class="expand-menu" href="contracttypes">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Types de contrat
+                        </NavLink>
+                    </li>
+                </ul>
+
+            }
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="diffusionpartners" >
+                <span class="oi oi-share-boxed" aria-hidden="true"></span> Partenaire de diffusion
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="offers" >
+                <span class="oi oi-script" aria-hidden="true"></span> Offres
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubmenuProfession=!expandSubmenuProfession">
+                <span class="oi oi-audio-spectrum" aria-hidden="true"></span> Profession
+            </NavLink>
+            @if (expandSubmenuProfession)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="professions" >
+                            <span class="oi oi-audio-spectrum" aria-hidden="true"></span> Liste de rofessions
+                        </NavLink>
+                        <NavLink class="nav-link" href="professionsectors">
+                            <span class="oi oi-star" aria-hidden="true"></span> Secteurs de Profession
+                        </NavLink>
+                    </li>
+                </ul>
+
+            }
+        </li>
+     
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="studios" >
+                <span class="oi oi-camera-slr" aria-hidden="true"></span> Studios
             </NavLink>
         </li>
     </ul>
@@ -43,6 +104,10 @@
 
 @code {
     private bool collapseNavMenu = true;
+
+    private bool expandSubmenuContract; 
+    private bool expandSubmenuProfession;
+
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaSolution.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210102092653_diffusionPartner_password")]
-    partial class diffusionPartner_password
+    [Migration("20210102144740_PartnerEmailPassword")]
+    partial class PartnerEmailPassword
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

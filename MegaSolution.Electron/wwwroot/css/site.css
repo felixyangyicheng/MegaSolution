@@ -111,3 +111,8 @@ div.main {
 .HideFooter {
     display: none;
 }
+/*Added value for subMenu*/
+.nav-item a.active::after{
+    content:"*";
+   
+}

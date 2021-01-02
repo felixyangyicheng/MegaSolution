@@ -130,6 +130,9 @@ namespace MegaSolution.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DiffusionPartnerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
