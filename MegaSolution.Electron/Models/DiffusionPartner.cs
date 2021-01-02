@@ -25,6 +25,11 @@ namespace MegaSolution.Electron.Models
         [DataType(DataType.Password)]
         [StringLength(15, ErrorMessage = "Your Password is limited to {2} to {1} characters", MinimumLength = 6)]
         public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string PasswordConfirm { get; set; }
         [Required]
         public string DiffusionPartnerName { get; set; }
         [Required]

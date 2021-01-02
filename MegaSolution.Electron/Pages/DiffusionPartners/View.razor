@@ -1,5 +1,91 @@
-﻿<h3>View</h3>
+﻿@page "/diffusionpartners/view/{Id}"
+@inherits ViewBase
 
-@code {
+<h3>Afficher les détails du partenaire</h3>
+<hr />
+<br />
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du partenaire" />
+}
+else
+{
+    _toastService.ShowInfo($"Vous êtes sur le partenaire {Model.DiffusionPartnerName}", "");
+
+    <div class="col-md-4">
+
+        <table class="table table-responsive">
+            <tr>
+                <td>
+                    <strong>Libellé</strong>
+                </td>
+                <td>@Model.DiffusionPartnerName</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Siret</strong>
+                </td>
+                <td>
+                    @Model.Siret
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Numéro d'adresse</strong>
+                </td>
+                <td>@Model.AddressNumber</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Adresse</strong>
+                </td>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Téléphone</strong>
+                </td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Email</strong>
+                </td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Code postal</strong>
+                </td>
+                <td>@Model.PostCode</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Commune</strong>
+                </td>
+                <td>@Model.City</td>
+            </tr>
+        </table>
+        <br />
+     
+    </div>
+
 
 }
+
+<button @onclick="GoToEdit" class="btn btn-outline-warning">
+    <span class="oi oi-pencil"></span>
+    Modifier partenaire
+</button>
+<button @onclick="GoToDelete" class="btn btn-outline-danger">
+    <span class="oi oi-circle-x"></span>
+    Supprimer partenaire
+</button>
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>

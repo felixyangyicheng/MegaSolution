@@ -27,6 +27,7 @@ namespace MegaSolution.Data
         [DataType(DataType.Password)]
         [StringLength(15, ErrorMessage = "Your Password is limited to {2} to {1} characters", MinimumLength = 6)]
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         [Required]
         public string DiffusionPartnerName { get; set; }
         [Required]

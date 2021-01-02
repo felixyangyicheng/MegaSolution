@@ -29,7 +29,7 @@ namespace MegaSolution.Electron.Pages.DiffusionPartners
             Model = await _repo.Get(EndPoints.DiffusionPartnerEndpoint, id);
         }
 
-        protected async Task EditStudio()
+        protected async Task EditPartner()
         {
             isSuccess = await _repo.Update(EndPoints.DiffusionPartnerEndpoint, Model, Model.DiffusionPartnerId);
             if (isSuccess)

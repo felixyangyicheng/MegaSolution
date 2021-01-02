@@ -25,7 +25,7 @@ namespace MegaSolution.Electron.Pages.DiffusionPartners
         protected DiffusionPartner Model = new DiffusionPartner();
         protected bool isSuccess = true;
 
-        protected async Task CreateStudio()
+        protected async Task CreatePartner()
         {
             isSuccess = await _repo.Create(EndPoints.DiffusionPartnerEndpoint, Model);
             if (isSuccess)

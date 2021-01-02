@@ -30,7 +30,7 @@ namespace MegaSolution.Electron.Pages.DiffusionPartners
             Model = await _repo.Get(EndPoints.DiffusionPartnerEndpoint, id);
         }
 
-        protected async Task DeleteStudio()
+        protected async Task DeletePartner()
         {
 
             isSuccess = await _repo.Delete(EndPoints.DiffusionPartnerEndpoint, Model.DiffusionPartnerId);
