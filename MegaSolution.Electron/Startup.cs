@@ -1,7 +1,7 @@
 using Blazored.LocalStorage;
 using Blazored.Toast;
 using MegaSolution.Electron.Contracts;
-using MegaSolution.Electron.Data;
+
 using MegaSolution.Electron.Providers;
 using MegaSolution.Electron.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +36,7 @@ namespace MegaSolution.Electron
             services.AddSingleton<AppData>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+
 
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
