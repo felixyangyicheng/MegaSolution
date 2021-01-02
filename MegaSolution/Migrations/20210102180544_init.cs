@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MegaSolution.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,22 +82,24 @@ namespace MegaSolution.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DiffsionPartners",
+                name: "DiffusionPartners",
                 columns: table => new
                 {
-                    DiffsionPartnerId = table.Column<int>(type: "int", nullable: false)
+                    DiffusionPartnerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Siret = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AddressNumber = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DiffsionPartnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    DiffusionPartnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostCode = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DiffsionPartners", x => x.DiffsionPartnerId);
+                    table.PrimaryKey("PK_DiffusionPartners", x => x.DiffusionPartnerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,8 +181,8 @@ namespace MegaSolution.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -224,8 +226,8 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -400,7 +402,7 @@ namespace MegaSolution.Migrations
                 name: "Contracts");
 
             migrationBuilder.DropTable(
-                name: "DiffsionPartners");
+                name: "DiffusionPartners");
 
             migrationBuilder.DropTable(
                 name: "Offers");

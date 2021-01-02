@@ -21,6 +21,17 @@ namespace MegaSolution.Data
         [Required]
         public string Phone { get; set; }
         [Required]
+<<<<<<< Updated upstream
+=======
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(15, ErrorMessage = "Your Password is limited to {2} to {1} characters", MinimumLength = 6)]
+        public string Password { get; set; }
+
+        [Required]
+>>>>>>> Stashed changes
         public string DiffusionPartnerName { get; set; }
         [Required]
         [StringLength(5, MinimumLength = 5)]
