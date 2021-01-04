@@ -238,7 +238,7 @@ namespace MegaSolution.Migrations
 
                     b.HasKey("ProfessionSectorId");
 
-                    b.ToTable("PorfessionSectors");
+                    b.ToTable("ProfessionSectors");
                 });
 
             modelBuilder.Entity("MegaSolution.Data.Studio", b =>

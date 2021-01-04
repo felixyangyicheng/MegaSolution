@@ -104,7 +104,7 @@ namespace MegaSolution.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PorfessionSectors",
+                name: "ProfessionSectors",
                 columns: table => new
                 {
                     ProfessionSectorId = table.Column<int>(type: "int", nullable: false)
@@ -113,7 +113,7 @@ namespace MegaSolution.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PorfessionSectors", x => x.ProfessionSectorId);
+                    table.PrimaryKey("PK_ProfessionSectors", x => x.ProfessionSectorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -278,9 +278,9 @@ namespace MegaSolution.Migrations
                 {
                     table.PrimaryKey("PK_Professions", x => x.ProfessionId);
                     table.ForeignKey(
-                        name: "FK_Professions_PorfessionSectors_ProfessionSectorId",
+                        name: "FK_Professions_ProfessionSectors_ProfessionSectorId",
                         column: x => x.ProfessionSectorId,
-                        principalTable: "PorfessionSectors",
+                        principalTable: "ProfessionSectors",
                         principalColumn: "ProfessionSectorId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -422,7 +422,7 @@ namespace MegaSolution.Migrations
                 name: "Studios");
 
             migrationBuilder.DropTable(
-                name: "PorfessionSectors");
+                name: "ProfessionSectors");
         }
     }
 }

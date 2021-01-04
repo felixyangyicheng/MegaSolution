@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaSolution.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210104175454_MysqlInit")]
+    [Migration("20210104184935_MysqlInit")]
     partial class MysqlInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -240,7 +240,7 @@ namespace MegaSolution.Migrations
 
                     b.HasKey("ProfessionSectorId");
 
-                    b.ToTable("PorfessionSectors");
+                    b.ToTable("ProfessionSectors");
                 });
 
             modelBuilder.Entity("MegaSolution.Data.Studio", b =>

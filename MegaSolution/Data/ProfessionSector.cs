@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MegaSolution.Data
 {
-    [Table("PorfessionSectors")]
+    [Table("ProfessionSectors")]
     public class ProfessionSector
     {
         public int ProfessionSectorId { get; set; }
