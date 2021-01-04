@@ -1,0 +1,18 @@
+2021-01-04 13:09:42.1131 ERROR This is an error
+2021-01-04 13:10:01.4930 INFO ContractTypes - GetContractTypes: Attempted Call
+2021-01-04 13:10:01.6572 INFO ContractTypes - GetContractTypes: Successful
+2021-01-04 18:58:49.2401 INFO Users - Login: Login Attempt from user admin@meagproduction.com 
+2021-01-04 18:58:49.4793 INFO Users - Login: admin@meagproduction.com Successfully Authenticated
+2021-01-04 18:58:49.4996 INFO Users - Login: Generating Token
+2021-01-04 18:58:57.5263 INFO Contracts - GetContracts: Attempted Call
+2021-01-04 18:58:57.6001 INFO Contracts - GetContracts: Successful
+2021-01-04 18:58:58.9651 INFO ContractTypes - GetContractTypes: Attempted Call
+2021-01-04 18:58:59.0225 INFO ContractTypes - GetContractTypes: Successful
+2021-01-04 18:59:00.4173 INFO DiffusionPartners - GetDiffusionPartner: Attempted Call
+2021-01-04 18:59:00.4488 INFO DiffusionPartners - GetDiffusionPartner: Successful
+2021-01-04 18:59:01.0477 INFO Offers - GetOffers: Attempted Call
+2021-01-04 18:59:01.0878 INFO Offers - GetOffers: Successful
+2021-01-04 18:59:04.8042 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 18:59:04.8479 INFO Professions - GetAuthors: Successful
+2021-01-04 18:59:06.1738 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 18:59:06.2102 INFO ProfessionSectors - GetProfessionSectors: Successful

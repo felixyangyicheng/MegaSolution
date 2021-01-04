@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MegaSolution.Migrations
 {
-    public partial class Init : Migration
+    public partial class MysqlInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,17 +13,17 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     ArtistId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePhoto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ArtistName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
+                    Email = table.Column<string>(type: "longtext", nullable: false),
+                    ProfilePhoto = table.Column<string>(type: "longtext", nullable: true),
+                    Address = table.Column<string>(type: "longtext", nullable: true),
+                    Phone = table.Column<string>(type: "longtext", nullable: true),
+                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ArtistName = table.Column<string>(type: "longtext", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
-                    CV = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CV = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,10 +34,10 @@ namespace MegaSolution.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,20 +48,20 @@ namespace MegaSolution.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false),
+                    UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "longtext", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "longtext", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "longtext", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -73,8 +74,8 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     ContractTypeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ContractTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ContractTypeName = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,22 +83,24 @@ namespace MegaSolution.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DiffsionPartners",
+                name: "DiffusionPartners",
                 columns: table => new
                 {
-                    DiffsionPartnerId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Siret = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DiffusionPartnerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Siret = table.Column<string>(type: "varchar(14)", maxLength: 14, nullable: false),
+                    Address = table.Column<string>(type: "longtext", nullable: false),
                     AddressNumber = table.Column<int>(type: "int", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DiffsionPartnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostCode = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Phone = table.Column<string>(type: "longtext", nullable: false),
+                    Email = table.Column<string>(type: "longtext", nullable: false),
+                    Password = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
+                    DiffusionPartnerName = table.Column<string>(type: "longtext", nullable: false),
+                    PostCode = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
+                    City = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DiffsionPartners", x => x.DiffsionPartnerId);
+                    table.PrimaryKey("PK_DiffusionPartners", x => x.DiffusionPartnerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,8 +108,8 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     ProfessionSectorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SectorName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    SectorName = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,15 +121,15 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     StudioId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Siret = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Siret = table.Column<string>(type: "varchar(14)", maxLength: 14, nullable: false),
+                    Address = table.Column<string>(type: "longtext", nullable: false),
                     AddressNumber = table.Column<int>(type: "int", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StudioName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Phone = table.Column<string>(type: "longtext", nullable: false),
+                    Email = table.Column<string>(type: "longtext", nullable: false),
+                    StudioName = table.Column<string>(type: "longtext", nullable: false),
+                    PostCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    City = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,10 +141,10 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    RoleId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    ClaimType = table.Column<string>(type: "longtext", nullable: true),
+                    ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -159,10 +162,10 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    ClaimType = table.Column<string>(type: "longtext", nullable: true),
+                    ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -179,10 +182,10 @@ namespace MegaSolution.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "longtext", nullable: true),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -199,8 +202,8 @@ namespace MegaSolution.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    RoleId = table.Column<string>(type: "varchar(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -223,10 +226,10 @@ namespace MegaSolution.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false),
+                    Value = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -244,11 +247,11 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     ContractId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ContractBegins = table.Column<DateTime>(type: "datetime2", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ContractBegins = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ContractDuration = table.Column<int>(type: "int", nullable: false),
-                    ContractReference = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    ContractPdfFile = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContractReference = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
+                    ContractPdfFile = table.Column<string>(type: "longtext", nullable: false),
                     ContractTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -267,8 +270,8 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     ProfessionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfessionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ProfessionName = table.Column<string>(type: "longtext", nullable: false),
                     ProfessionSectorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -287,15 +290,15 @@ namespace MegaSolution.Migrations
                 columns: table => new
                 {
                     OfferId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(type: "longtext", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     OfferDuration = table.Column<int>(type: "int", nullable: false),
                     AvailablePlace = table.Column<int>(type: "int", nullable: false),
-                    OfferDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    ProfilDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OfferReference = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OfferDescription = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: true),
+                    ProfilDescription = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: true),
+                    Location = table.Column<string>(type: "longtext", nullable: false),
+                    OfferReference = table.Column<string>(type: "longtext", nullable: false),
                     StudioId = table.Column<int>(type: "int", nullable: false),
                     ProfessionId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -325,8 +328,7 @@ namespace MegaSolution.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -352,8 +354,7 @@ namespace MegaSolution.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contracts_ContractTypeId",
@@ -400,7 +401,7 @@ namespace MegaSolution.Migrations
                 name: "Contracts");
 
             migrationBuilder.DropTable(
-                name: "DiffsionPartners");
+                name: "DiffusionPartners");
 
             migrationBuilder.DropTable(
                 name: "Offers");
