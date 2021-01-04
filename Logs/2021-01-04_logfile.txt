@@ -126,3 +126,65 @@
 2021-01-04 21:20:30.8437 INFO ProfessionSectors - GetProfessionSectors: Successful
 2021-01-04 21:20:38.2164 INFO Studios - GetStudios: Attempted Call
 2021-01-04 21:20:38.2392 INFO Studios - GetStudios: Successful
+2021-01-04 21:29:18.3155 INFO Artists - GetArtists: Attempted Call
+2021-01-04 21:29:18.4475 INFO Artists - GetArtists: Successful
+2021-01-04 21:29:28.3909 INFO Users - Login: Login Attempt from user admin@meagproduction.com 
+2021-01-04 21:29:28.5803 INFO Users - Login: admin@meagproduction.com Successfully Authenticated
+2021-01-04 21:29:28.6029 INFO Users - Login: Generating Token
+2021-01-04 21:29:30.2271 INFO Artists - GetArtists: Attempted Call
+2021-01-04 21:29:30.2541 INFO Artists - GetArtists: Successful
+2021-01-04 21:29:38.9715 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 21:29:39.0545 INFO Professions - GetAuthors: Successful
+2021-01-04 21:29:42.0593 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 21:29:42.0984 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 21:29:47.7388 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 21:29:47.7615 INFO Professions - GetAuthors: Successful
+2021-01-04 21:29:49.1542 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 21:29:49.1758 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 21:29:54.7879 INFO Studios - GetStudios: Attempted Call
+2021-01-04 21:29:54.8287 INFO Studios - GetStudios: Successful
+2021-01-04 21:30:19.2369 INFO Studios - GetStudios: Attempted Call
+2021-01-04 21:30:19.4230 INFO Studios - GetStudios: Successful
+2021-01-04 21:34:24.0987 INFO Studios - GetStudios: Attempted Call
+2021-01-04 21:34:24.2958 INFO Studios - GetStudios: Successful
+2021-01-04 21:34:25.8447 INFO Users - Login: Login Attempt from user admin@meagproduction.com 
+2021-01-04 21:34:26.0066 INFO Users - Login: admin@meagproduction.com Successfully Authenticated
+2021-01-04 21:34:26.0282 INFO Users - Login: Generating Token
+2021-01-04 21:34:27.1779 INFO Studios - GetStudios: Attempted Call
+2021-01-04 21:34:27.2009 INFO Studios - GetStudios: Successful
+2021-01-04 21:34:48.1773 INFO Users - Login: Login Attempt from user admin@meagproduction.com 
+2021-01-04 21:34:48.4356 INFO Users - Login: admin@meagproduction.com Successfully Authenticated
+2021-01-04 21:34:48.4613 INFO Users - Login: Generating Token
+2021-01-04 21:34:50.2609 INFO Studios - GetStudios: Attempted Call
+2021-01-04 21:34:50.3564 INFO Studios - GetStudios: Successful
+2021-01-04 22:00:09.7700 INFO Studios - GetStudios: Attempted Call
+2021-01-04 22:00:09.9688 INFO Studios - GetStudios: Successful
+2021-01-04 22:00:12.4184 INFO Users - Login: Login Attempt from user admin@meagproduction.com 
+2021-01-04 22:00:12.5883 INFO Users - Login: admin@meagproduction.com Successfully Authenticated
+2021-01-04 22:00:12.6112 INFO Users - Login: Generating Token
+2021-01-04 22:00:13.5879 INFO Studios - GetStudios: Attempted Call
+2021-01-04 22:00:13.6122 INFO Studios - GetStudios: Successful
+2021-01-04 22:00:21.4616 INFO DiffusionPartners - GetDiffusionPartner: Attempted Call
+2021-01-04 22:00:21.5021 INFO DiffusionPartners - GetDiffusionPartner: Successful
+2021-01-04 22:02:50.8186 INFO DiffusionPartners - GetDiffusionPartner: Attempted Call
+2021-01-04 22:02:50.9299 INFO DiffusionPartners - GetDiffusionPartner: Successful
+2021-01-04 22:02:53.6112 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 22:02:53.7484 INFO Professions - GetAuthors: Successful
+2021-01-04 22:03:56.0990 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 22:03:56.2969 INFO Professions - GetAuthors: Successful
+2021-01-04 22:03:57.6665 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 22:03:57.7093 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 22:03:59.1884 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 22:03:59.2140 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 22:04:47.2866 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 22:04:47.3121 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 22:04:48.8551 INFO Artists - GetArtists: Attempted Call
+2021-01-04 22:04:48.8914 INFO Artists - GetArtists: Successful
+2021-01-04 22:04:53.5943 INFO Artists - GetArtists: Attempted Call
+2021-01-04 22:04:53.6156 INFO Artists - GetArtists: Successful
+2021-01-04 22:05:11.5686 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 22:05:11.5936 INFO ProfessionSectors - GetProfessionSectors: Successful
+2021-01-04 22:05:21.2914 INFO Professions - GetAuthors: Attempted Call
+2021-01-04 22:05:21.3171 INFO Professions - GetAuthors: Successful
+2021-01-04 22:05:22.0821 INFO ProfessionSectors - GetProfessionSectors: Attempted Call
+2021-01-04 22:05:22.1044 INFO ProfessionSectors - GetProfessionSectors: Successful

@@ -28,7 +28,7 @@ namespace MegaSolution.Electron.Models
         [Required]
         public string StudioName { get; set; }
         [Required]
-        [MaxLength(10)]
+        [MaxLength(5)]
         public string PostCode { get; set; }
         [Required]
         public string City { get; set; }
