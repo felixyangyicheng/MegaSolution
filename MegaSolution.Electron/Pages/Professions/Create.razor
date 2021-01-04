@@ -18,6 +18,19 @@
         <label for="name">Libellé</label>
         <InputText @bind-Value="Model.ProfessionName" class="form-control" id="name" />
     </div>
+    <div class="form-group">
+        <label for="type">Secteur de profession</label>
+        <select @bind="Model.ProfessionSectorId" class="form-control" id="type">
+            <option value="">-- Selectionner secteur --</option>
+            @if (ProfessionSectors != null)
+            {
+                foreach (var sector in ProfessionSectors)
+                {
+                    <option value="@sector.SectorName">@sector.SectorName</option>
+                }
+            }
+        </select>
+    </div>
 
     <button class="btn btn-primary" type="submit">
         <span class="oi oi-pencil"></span>

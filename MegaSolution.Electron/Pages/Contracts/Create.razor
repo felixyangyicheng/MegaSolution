@@ -1,4 +1,4 @@
-﻿
+﻿@page "/contracts/create/"
 @attribute [Authorize(Roles = "Administrator")]
 @inherits CreateBase
 
@@ -28,7 +28,7 @@
     <div class="form-group">
         <label for="type">Type de contrat</label>
         <select @bind="Model.ContractTypeId" class="form-control" id="type">
-            <option value="">-- Select Author --</option>
+            <option value="">-- Selectionner type --</option>
             @if (ContractTypes != null)
             {
                 foreach (var type in ContractTypes)

@@ -1,4 +1,4 @@
-﻿@page "/contracttype/create/"
+﻿@page "/contracttypes/create/"
 @attribute [Authorize(Roles = "Administrator")]
 @inherits CreateBase
 
@@ -7,7 +7,7 @@
 <br />
 @if (!isSuccess)
 {
-    <ErrorMessage Message="Something Went Wrong With the Operation" />
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
 }
 
 
