@@ -34,11 +34,38 @@
     <script>
         function addToLocalStorage(key, value) { localStorage[key] = value; }
         function readLocalStorage(key) { return localStorage[key]; }
-            //function addCookie(key, value, days) {
-            //    var date = new Date();
-            //    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            //    document.cookie = `${key}=${value}; expires=${date.toGMTString()}; path=/`;
-            //}
+                            //function addCookie(key, value, days) {
+                            //    var date = new Date();
+                            //    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                            //    document.cookie = `${key}=${value}; expires=${date.toGMTString()}; path=/`;
+                            //}
     </script>
+
+    @*charts*@
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="~/js/Chart.js"></script>
+
+    <script src="_content/ChartJs.Blazor/moment-with-locales.min.js"
+            type="text/javascript" language="javascript"></script>
+    <!-- Reference the included ChartJs javascript file. -->
+    <script src="_content/ChartJs.Blazor/Chart.min.js"
+            type="text/javascript" language="javascript"></script>
+    <!-- This is the glue between the C# code and the ChartJs charts -->
+    <script src="_content/ChartJs.Blazor/ChartJsInterop.js"
+            type="text/javascript" language="javascript"></script>
+    <!-- Some styling -->
+    <link rel="stylesheet" href="_content/ChartJs.Blazor/ChartJSBlazor.css" />
+
+
+
+
+    @*Blazor ChartJs*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <!-- This is the glue between Blazor and Chart.js -->
+    <script src="_content/ChartJs.Blazor.Fork/ChartJsBlazorInterop.js"></script>
+
 </body>
 </html>

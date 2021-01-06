@@ -110,7 +110,7 @@ namespace MegaSolution.Electron.Pages.Artists
 
         protected void BackToList()
         {
-            _navManager.NavigateTo("/books/");
+            _navManager.NavigateTo("/artists/");
         }
     }
 }
