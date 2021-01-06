@@ -28,7 +28,28 @@ namespace MegaSolution.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+        #region Count professions
+        [HttpGet("total") ]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CountAuthors()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var professions = await _professionRepository.Count();
+                //var response = _mapper.Map<IList<ProfessionDTO>>(professions);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(professions);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
 
+        }
+        #endregion
         #region Get All
         /// <summary>
         /// Get all professions

@@ -21,7 +21,7 @@ namespace MegaSolution.Electron.Pages.ContractTypes
         [Parameter]
         public string Id { get; set; }
 
-        protected    ContractType Model = new ContractType();
+        public  ContractType Model = new ContractType();
         protected bool isSuccess = true;
         protected override async Task OnInitializedAsync()
         {

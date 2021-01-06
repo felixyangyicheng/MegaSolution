@@ -51,8 +51,11 @@ namespace MegaSolution.Electron.Pages.Artists
                     var ext = Path.GetExtension(file.Name);
                     var picId = Guid.NewGuid().ToString().Replace("-", "");
                     var picName = $"{picId}{ext}";
+                    if (Model.ProfilePhoto.Any())
+                    {
 
-                    _fileUpload.RemoveFile(Model.ProfilePhoto);
+                        _fileUpload.RemoveFile(Model.ProfilePhoto);
+                    }
                     await _fileUpload.UploadFile(msFile, picName);
 
                     Model.ProfilePhoto = picName;

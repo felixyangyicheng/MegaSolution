@@ -29,7 +29,28 @@ namespace MegaSolution.Controllers
             _mapper = mapper;
         }
 
+        #region Count type
+        [HttpGet("total")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CountContractTypes()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var contractType = await _contractTypeRepository.Count();
+                //var response = _mapper.Map<IList<ContractTypeDTO>>(contractType);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(contractType);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
 
+        }
+        #endregion
         #region Get all
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]

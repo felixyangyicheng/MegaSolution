@@ -34,7 +34,11 @@ namespace MegaSolution.Electron.Pages.Artists
 
         protected async Task DeleteArtist()
         {
-            _fileUpload.RemoveFile(Model.ProfilePhoto);
+            if (Model.ProfilePhoto.Any())
+            {
+                _fileUpload.RemoveFile(Model.ProfilePhoto);
+            }
+            
             isSuccess = await _repo.Delete(EndPoints.ArtistEndpoint, Model.ArtistId);
             if (isSuccess)
             {

@@ -30,6 +30,29 @@ namespace MegaSolution.Controllers
             _mapper = mapper;
         }
 
+        #region Count sectors
+        [HttpGet("total")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CountProfessionSectors()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var professionSectors = await _professionSectorRepository.Count();
+                //var response = _mapper.Map<IList<ProfessionSectorDTO>>(professionSectors);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(professionSectors);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+
+        }
+        #endregion
+
         #region  Get All 
         /// <summary>
         /// Get all ProfessionSectors

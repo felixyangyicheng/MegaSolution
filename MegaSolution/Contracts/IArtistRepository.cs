@@ -8,5 +8,6 @@ namespace MegaSolution.Contracts
 {
     public interface IArtistRepository:IRepositoryBase<Artist>
     {
+     
     }
 }

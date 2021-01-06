@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 
 namespace MegaSolution.Repositories
 {
+
     public class ArtistRepository: IArtistRepository
     {
         private readonly ApplicationDbContext _db;
         public ArtistRepository(ApplicationDbContext db)
         {
             _db = db;
+        }
+
+        public async Task<int> Count()
+        {
+            
+            return await _db.Artists.CountAsync();
+            
         }
 
         public async Task<bool> Create(Artist entity)

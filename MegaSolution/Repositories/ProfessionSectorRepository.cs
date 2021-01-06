@@ -17,6 +17,11 @@ namespace MegaSolution.Repositories
             _db = db;
         }
 
+        public Task<int> Count()
+        {
+            return _db.ProfessionSectors.CountAsync();
+        }
+
         public async Task<bool> Create(ProfessionSector entity)
         {
             await _db.ProfessionSectors.AddAsync(entity);

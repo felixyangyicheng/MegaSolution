@@ -29,7 +29,30 @@ namespace MegaSolution.Controllers
             _mapper = mapper;
         }
 
-       
+        #region Get count
+
+        [HttpGet("Total")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+        public async Task<IActionResult> CountArtists()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var artists = await _artistRepository.Count();
+                //var response = _mapper.Map<IList<ArtistDTO>>(artists);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(artists);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+        }
+        #endregion
+
         #region Get all
         /// <summary>
         /// Get All Artists

@@ -29,6 +29,29 @@ namespace MegaSolution.Controllers
             _mapper = mapper;
         }
 
+        #region Count partner
+        [HttpGet("total")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CountDiffusionPartner()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var partners = await _diffusionPartnerRepository.Count();
+                //var response = _mapper.Map<IList<DiffusionPartnerDTO>>(partners);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(partners);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+
+        }
+        #endregion
+
         #region Get all
         /// <summary>
         /// Get all diffusion parteners

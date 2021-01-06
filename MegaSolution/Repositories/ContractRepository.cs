@@ -16,6 +16,11 @@ namespace MegaSolution.Repositories
             _db = db;
         }
 
+        public async Task<int> Count()
+        {
+            return await _db.Contracts.CountAsync();
+        }
+
         public async Task<bool> Create(Contract entity)
         {
             await _db.Contracts.AddAsync(entity);

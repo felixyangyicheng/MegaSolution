@@ -29,7 +29,28 @@ namespace MegaSolution.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+        #region Count studios
+        [HttpGet("total")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CountStudios()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var studios = await _studioRepository.Count();
+                //var response = _mapper.Map<IList<StudioDTO>>(studios);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(studios);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
 
+        }
+        #endregion
         #region Get all
         /// <summary>
         /// Get all studios
