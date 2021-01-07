@@ -17,9 +17,9 @@ namespace MegaSolution.Repositories
             _db = db;
         }
 
-        public Task<int> Count()
+        public int Count()
         {
-            return _db.Offers.CountAsync();
+            return _db.Offers.Count();
         }
 
         public async Task<bool> Create(Offer entity)

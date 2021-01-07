@@ -17,7 +17,7 @@ else
             Créer contrat
         </a>
     </AuthorizeView>
-
+    <hr />
     <br />
     <br />
     <br />
@@ -37,43 +37,43 @@ else
                     <th>Début</th>
                     <th>Type de contrat</th>
                     <th>Opération</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
                 @foreach (var contract in Model)
                 {
-                <tr>
-                    <td>
-                        @if (contract.ContractPdfFile == null)
-                        {
-                            <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
-                        }
-                        else
-                        {
-                            <img src="uploads/@contract.ContractPdfFile" class="img-thumbnail" style="height:100px;width:100px" />
-                        }
-                    </td>
+                    <tr>
+                        <td>
+                            @if (contract.ContractPdfFile == null)
+                            {
+                                <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
+                            }
+                            else
+                            {
+                                <img src="uploads/@contract.ContractPdfFile" class="img-thumbnail" style="height:100px;width:100px" />
+                            }
+                        </td>
 
-                    <td>@contract.ContractReference</td>
-                    <td>@contract.ContractDuration</td>
-                    <td>@contract.ContractBegins</td>
-                    <td>@contract.ContractType.ContractTypeName</td>
+                        <td>@contract.ContractReference</td>
+                        <td>@contract.ContractDuration</td>
+                        <td>@contract.ContractBegins</td>
+                        <td>@contract.ContractType.ContractTypeName</td>
 
-                    <td>
-                        <a href="/contracts/view/@contract.ContractId" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <AuthorizeView Roles="Administrator">
-                            <a href="/contracts/edit/@contract.ContractId" class="btn btn-warning">
-                                <span class="oi oi-pencil"></span>
+                        <td>
+                            <a href="/contracts/view/@contract.ContractId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
                             </a>
-                            <a href="/contracts/delete/@contract.ContractId" class="btn btn-danger">
-                                <span class="oi oi-delete"></span>
-                            </a>
-                        </AuthorizeView>
-                    </td>
-                </tr>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/contracts/edit/@contract.ContractId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/contracts/delete/@contract.ContractId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

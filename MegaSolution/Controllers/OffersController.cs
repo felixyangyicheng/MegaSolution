@@ -33,13 +33,13 @@ namespace MegaSolution.Controllers
         [HttpGet("total")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CountOffers()
+        public  IActionResult CountOffers()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var offers = await _offerRepository.Count();
+                var offers = _offerRepository.Count();
                 //var response = _mapper.Map<IList<OfferDTO>>(offers);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(offers);

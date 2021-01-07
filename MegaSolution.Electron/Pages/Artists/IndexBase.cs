@@ -20,9 +20,13 @@ namespace MegaSolution.Electron.Pages.Artists
 
         protected IList<Artist> Model;
 
+        protected int number;
+
         protected async override Task OnInitializedAsync()
         {
             Model = await _repo.Get(EndPoints.ArtistEndpoint);
+
+            
         }
     }
 }

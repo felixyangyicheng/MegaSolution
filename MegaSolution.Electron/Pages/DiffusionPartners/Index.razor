@@ -11,13 +11,14 @@
 }
 else
 {
-    <AuthorizeView Roles="Administrator">
-        <a href="/diffusionpartners/create" class="btn btn-primary">
-            <span class="oi oi-plus"></span>
-            Créer un partenaire
-        </a>
-        <br />
-    </AuthorizeView>
+<AuthorizeView Roles="Administrator">
+    <a href="/diffusionpartners/create" class="btn btn-primary">
+        <span class="oi oi-plus"></span>
+        Créer un partenaire
+    </a>
+    <hr />
+    <br />
+</AuthorizeView>
     @if (Model.Count < 1)
     {
         <LoadingMessage Message="Il n'y a aucun partenaire.

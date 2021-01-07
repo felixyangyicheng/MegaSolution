@@ -37,7 +37,7 @@ namespace MegaSolution.Electron.Pages.Studios
 
         protected void BackToList()
         {
-            _navManager.NavigateTo("/stuios/");
+            _navManager.NavigateTo("/studios/");
         }
     }
 }

@@ -32,13 +32,13 @@ namespace MegaSolution.Controllers
         [HttpGet("total") ]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CountAuthors()
+        public IActionResult CountProfessions()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var professions = await _professionRepository.Count();
+                var professions = _professionRepository.Count();
                 //var response = _mapper.Map<IList<ProfessionDTO>>(professions);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(professions);
@@ -58,7 +58,7 @@ namespace MegaSolution.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAuthors()
+        public async Task<IActionResult> GetProfessions()
         {
             var location = GetControllerActionNames();
             try

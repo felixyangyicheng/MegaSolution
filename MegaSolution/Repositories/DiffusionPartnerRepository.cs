@@ -17,9 +17,9 @@ namespace MegaSolution.Repositories
             _db = db;
         }
 
-        public async Task<int> Count()
+        public int Count()
         {
-            return await _db.DiffusionPartners.CountAsync();
+            return _db.DiffusionPartners.Count();
         }
 
         public async Task<bool> Create(DiffusionPartner entity)

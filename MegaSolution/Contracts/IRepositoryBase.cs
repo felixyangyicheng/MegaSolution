@@ -14,7 +14,7 @@ namespace MegaSolution.Contracts
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
         Task<bool> Save();
-        Task<int> Count();
+        int Count();
 
     }
 }

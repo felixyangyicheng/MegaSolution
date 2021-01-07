@@ -17,10 +17,10 @@ namespace MegaSolution.Repositories
             _db = db;
         }
 
-        public async Task<int> Count()
+        public int Count()
         {
             
-            return await _db.Artists.CountAsync();
+            return  _db.Artists.Count();
             
         }
 

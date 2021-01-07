@@ -33,13 +33,13 @@ namespace MegaSolution.Controllers
         [HttpGet("total")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CountContractTypes()
+        public IActionResult CountContractTypes()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var contractType = await _contractTypeRepository.Count();
+                var contractType = _contractTypeRepository.Count();
                 //var response = _mapper.Map<IList<ContractTypeDTO>>(contractType);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(contractType);

@@ -12,5 +12,7 @@ namespace MegaSolution.Electron.Contracts
         Task<bool> Create(string url, T obj);
         Task<bool> Update(string url, T obj, int id);
         Task<bool> Delete(string url, int id);
+
+        Task<int> Count(string url);
     }
 }

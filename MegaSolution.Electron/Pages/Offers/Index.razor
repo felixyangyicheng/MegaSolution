@@ -17,7 +17,7 @@ else
             Créer offre
         </a>
     </AuthorizeView>
-
+    <hr />
     <br />
     <br />
     <br />
@@ -43,28 +43,28 @@ else
             <tbody>
                 @foreach (var offer in Model)
                 {
-                <tr>
-                    <td>@offer.OfferId</td>
+                    <tr>
+                        <td>@offer.OfferId</td>
 
-                    <td>@offer.Title</td>
-                    <td>@offer.OfferDescription</td>
-                    <td>@offer.Studio.StudioName</td>
-                    <td>@offer.Profession.ProfessionName</td>
+                        <td>@offer.Title</td>
+                        <td>@offer.OfferDescription</td>
+                        <td>@offer.Studio.StudioName</td>
+                        <td>@offer.Profession.ProfessionName</td>
 
-                    <td>
-                        <a href="/offers/view/@offer.OfferId" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <AuthorizeView Roles="Administrator">
-                            <a href="/offers/edit/@offer.OfferId" class="btn btn-warning">
-                                <span class="oi oi-pencil"></span>
+                        <td>
+                            <a href="/offers/view/@offer.OfferId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
                             </a>
-                            <a href="/offers/delete/@offer.OfferId" class="btn btn-danger">
-                                <span class="oi oi-delete"></span>
-                            </a>
-                        </AuthorizeView>
-                    </td>
-                </tr>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/offers/edit/@offer.OfferId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/offers/delete/@offer.OfferId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

@@ -10,13 +10,14 @@
 }
 else
 {
-    <AuthorizeView Roles="Administrator">
-        <a href="/contracttypes/create" class="btn btn-primary">
-            <span class="oi oi-plus"></span>
-            Créer un type de contrat
-        </a>
-        <br />
-    </AuthorizeView>
+<AuthorizeView Roles="Administrator">
+    <a href="/contracttypes/create" class="btn btn-primary">
+        <span class="oi oi-plus"></span>
+        Créer un type de contrat
+    </a>
+    <hr />
+    <br />
+</AuthorizeView>
     @if (Model.Count < 1)
     {
         <LoadingMessage Message="Il n'y a aucun type de contrat, cliquez sur 'Créer un auteur' pour commencer" />

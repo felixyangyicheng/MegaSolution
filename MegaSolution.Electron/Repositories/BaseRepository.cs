@@ -21,6 +21,35 @@ namespace MegaSolution.Electron.Repositories
             _client = client;
             _localStorage = localStorage;
         }
+
+        public async Task<int> Count(string url)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+                var client = _client.CreateClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("bearer", await GetBearerToken());
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<int>(content);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+
+            }
+        }
+
         public async Task<bool> Create(string url, T obj)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);

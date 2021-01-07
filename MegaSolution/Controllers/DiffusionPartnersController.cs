@@ -33,13 +33,13 @@ namespace MegaSolution.Controllers
         [HttpGet("total")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CountDiffusionPartner()
+        public IActionResult CountDiffusionPartner()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var partners = await _diffusionPartnerRepository.Count();
+                var partners =  _diffusionPartnerRepository.Count();
                 //var response = _mapper.Map<IList<DiffusionPartnerDTO>>(partners);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(partners);

@@ -31,17 +31,17 @@ namespace MegaSolution.Controllers
 
         #region Get count
 
-        [HttpGet("Total")]
+        [HttpGet("total")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> CountArtists()
+        public IActionResult CountArtists()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var artists = await _artistRepository.Count();
+                var artists =  _artistRepository.Count();
                 //var response = _mapper.Map<IList<ArtistDTO>>(artists);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(artists);

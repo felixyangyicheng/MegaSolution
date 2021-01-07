@@ -11,10 +11,10 @@ else
     <AuthorizeView Roles="Administrator, Customer">
         <a href="/artists/create" class="btn btn-primary">
             <span class="oi oi-plus"></span>
-           Créer artiste
+            Créer artiste
         </a>
     </AuthorizeView>
-
+    <hr />
     <br />
     <br />
     <br />
@@ -43,49 +43,49 @@ else
             <tbody>
                 @foreach (var artist in Model)
                 {
-                <tr>
-                    <td>
-                        @if (artist.ProfilePhoto == null)
-                        {
+                    <tr>
+                        <td>
+                            @if (artist.ProfilePhoto == null)
+                            {
 
-                            <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
-                        }
-                        else
-                        {
-                            <img src="~/uploads/@artist.ProfilePhoto" class="img-thumbnail" style="height:100px;width:100px" />
-                        }
-                    </td>
-                    <td>@artist.ArtistId</td>
-                    <td>@artist.Gender</td>
-                    <td>@artist.LastName</td>
-                    <td>@artist.FirstName</td>
-                    <td>@artist.Email</td>
-                    <td>@artist.BirthDate</td>
-                    <td>
-                        @if (artist.ArtistName == null)
-                        {
-                            <span class="text-muted">Non renseigné</span>
-                        }
-                        else
-                        {
-                            <span>@artist.ArtistName </span>
-                        }
-                    </td>
-                
-                    <td>
-                        <a href="/artists/view/@artist.ArtistId" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
-                        </a>
-                        <AuthorizeView Roles="Administrator">
-                            <a href="/artists/edit/@artist.ArtistId" class="btn btn-warning">
-                                <span class="oi oi-pencil"></span>
+                                <img src="uploads/no-photo-icon.png" class="img-thumbnail" style="height:100px;width:100px" />
+                            }
+                            else
+                            {
+                                <img src="~/uploads/@artist.ProfilePhoto" class="img-thumbnail" style="height:100px;width:100px" />
+                            }
+                        </td>
+                        <td>@artist.ArtistId</td>
+                        <td>@artist.Gender</td>
+                        <td>@artist.LastName</td>
+                        <td>@artist.FirstName</td>
+                        <td>@artist.Email</td>
+                        <td>@artist.BirthDate</td>
+                        <td>
+                            @if (artist.ArtistName == null)
+                            {
+                                <span class="text-muted">Non renseigné</span>
+                            }
+                            else
+                            {
+                                <span>@artist.ArtistName </span>
+                            }
+                        </td>
+
+                        <td>
+                            <a href="/artists/view/@artist.ArtistId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
                             </a>
-                            <a href="/artists/delete/@artist.ArtistId" class="btn btn-danger">
-                                <span class="oi oi-delete"></span>
-                            </a>
-                        </AuthorizeView>
-                    </td>
-                </tr>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/artists/edit/@artist.ArtistId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/artists/delete/@artist.ArtistId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

@@ -34,13 +34,13 @@ namespace MegaSolution.Controllers
         [HttpGet("total")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CountProfessionSectors()
+        public IActionResult CountProfessionSectors()
         {
             var location = GetControllerActionNames();
             try
             {
                 _logger.LogInfo($"{location}: Attempted Call");
-                var professionSectors = await _professionSectorRepository.Count();
+                var professionSectors =  _professionSectorRepository.Count();
                 //var response = _mapper.Map<IList<ProfessionSectorDTO>>(professionSectors);
                 _logger.LogInfo($"{location}: Successful");
                 return Ok(professionSectors);
