@@ -86,7 +86,7 @@ namespace MegaSolution.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>An Artist's record</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -255,8 +255,8 @@ namespace MegaSolution.Controllers
         #endregion
 
         #region Search
-        // api/employees/search?name=john
-        //Api/employees/search/john/
+        // api/artists/search?keyword=john
+        //Api/artists/search
         [HttpGet("{search}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

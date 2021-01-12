@@ -80,7 +80,7 @@ namespace MegaSolution.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>An Author's record</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

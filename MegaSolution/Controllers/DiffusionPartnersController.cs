@@ -84,7 +84,7 @@ namespace MegaSolution.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -244,7 +244,31 @@ namespace MegaSolution.Controllers
             }
         }
         #endregion
+        #region Search
+        // api/DiffusionPartners/search?keyword=john
+        //Api/DiffusionPartners/search
+        [HttpGet("{search}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+        public async Task<IActionResult> Search(string keyword)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var partners = await _diffusionPartnerRepository.Search(keyword);
+                var response = _mapper.Map<IList<DiffusionPartnerDTO>>(partners);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+
+        }
+        #endregion
 
 
         private string GetControllerActionNames()

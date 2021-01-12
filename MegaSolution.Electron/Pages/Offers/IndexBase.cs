@@ -31,6 +31,11 @@ namespace MegaSolution.Electron.Pages.Offers
 
         }
 
+        protected async Task Clear()
+        {
+
+        }
+
         public object selectedSearchValue { get; set; }
         protected void MySearchHandler(object newValue)
         {
