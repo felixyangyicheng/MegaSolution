@@ -8,6 +8,6 @@ namespace MegaSolution.Contracts
 {
     public interface IContractRepository:IRepositoryBase<Contract>
     {
-
+        Task<IList<Contract>> Search(string keyword);
     }
 }

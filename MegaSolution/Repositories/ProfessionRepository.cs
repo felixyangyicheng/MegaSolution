@@ -64,6 +64,15 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<Profession>> Search(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return await _db.Professions.Where(a => a.ProfessionName.Contains(keyword)).ToListAsync();
+            }
+            return await _db.Professions.ToListAsync();
+        }
+
         public async Task<bool> Update(Profession entity)
         {
             _db.Professions.Update(entity);

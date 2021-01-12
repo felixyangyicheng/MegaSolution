@@ -24,12 +24,14 @@ namespace MegaSolution.Electron.Pages.Offers
 
         protected Offer Model = new Offer();
 
+
         protected override async Task OnInitializedAsync()
         {
             int id = Convert.ToInt32(Id);
             Model = await _repo.Get(EndPoints.OfferEndpoint, id);
 
         }
+
 
         protected void BackToList()
         {

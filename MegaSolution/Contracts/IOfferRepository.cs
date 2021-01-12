@@ -8,5 +8,7 @@ namespace MegaSolution.Contracts
 {
     public interface IOfferRepository:IRepositoryBase<Offer>
     {
+        Task<IList<Offer>> Search(string keyword);
+
     }
 }

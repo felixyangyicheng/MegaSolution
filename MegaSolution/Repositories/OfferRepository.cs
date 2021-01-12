@@ -64,6 +64,17 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<Offer>> Search(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return await _db.Offers.Where(a => a.OfferDescription.Contains(keyword)
+                || a.OfferReference.Contains(keyword)
+                || a.Location.Contains(keyword)).ToListAsync();
+            }
+            return await _db.Offers.ToListAsync();
+        }
+
         public async Task<bool> Update(Offer entity)
         {
             _db.Offers.Update(entity);

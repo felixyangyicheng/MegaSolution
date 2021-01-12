@@ -10,7 +10,7 @@ Une erreur s'est produite lors de la tentative de connexion, vérifiez votre mot
 <div class="card-body">
     <EditForm Model="Model" OnValidSubmit="HandleLogin">
         <DataAnnotationsValidator />
-        <ValidationSummary />
+        <Blazorise.ValidationSummary />
         <div class="form-group">
             <label for="email">Adresse email</label>
             <InputText Id="email" class="form-control" @bind-Value="Model.EmailAddress" />

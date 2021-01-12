@@ -8,6 +8,8 @@ namespace MegaSolution.Contracts
 {
     public interface IDiffusionPartnerRepository:IRepositoryBase<DiffusionPartner>
     {
+        Task<IList<DiffusionPartner>> Search(string keyword);
+
 
     }
 }

@@ -254,7 +254,30 @@ namespace MegaSolution.Controllers
 
         #endregion
 
+        #region Search
+        // api/employees/search?name=john
+        //Api/employees/search/john/
+        [HttpGet("{search}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+        public async Task<IActionResult> Search(string keyword)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var artists = await _artistRepository.Search(keyword);
+                var response = _mapper.Map<IList<ArtistDTO>>(artists);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+        }
+        #endregion
 
 
 

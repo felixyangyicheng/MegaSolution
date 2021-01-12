@@ -61,6 +61,16 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<Contract>> Search(string keyword)
+        {
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return await _db.Contracts.Where(a => a.ContractReference.Contains(keyword)).ToListAsync();
+            }
+            return await _db.Contracts.ToListAsync();
+        }
+
         public async Task<bool> Update(Contract entity)
         {
             _db.Contracts.Update(entity);

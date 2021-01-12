@@ -61,6 +61,18 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<Artist>> Search(string keyword)
+        {
+           
+            if (!string.IsNullOrEmpty(keyword))
+            {
+               return await _db.Artists.Where(a => a.FirstName.Contains(keyword)
+               ||a.LastName.Contains(keyword)
+               ||a.ArtistName.Contains(keyword)).ToListAsync();
+            }
+            return await _db.Artists.ToListAsync();
+        }
+
         public async Task<bool> Update(Artist entity)
         {
             _db.Artists.Update(entity);

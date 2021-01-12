@@ -17,17 +17,34 @@ else
             Créer offre
         </a>
     </AuthorizeView>
+
+
+
     <hr />
     <br />
     <br />
     <br />
+
+
+
     @if (Model.Count < 1)
     {
         <LoadingMessage Message="Il n'y a pas de offre.
                          Cliquez sur «Créer une offre» pour commencer " />
     }
     else
-    {
+    {   <div class="form-inline">
+    <Label class="sr-only" for="filter-name">Filter</Label>
+    <Autocomplete Data="@Model"
+                  TextField="@((item)=>item.OfferReference)"
+                  ValueField="@((item)=>item.OfferReference)"
+                  SelectedValue="@selectedSearchValue"
+                  SelectedValueChanged="@MySearchHandler"
+                  Placeholder="Search..." />
+    <Button type="button" class="btn btn-primary mr-sm-2 mb-2" @onclick="Filter">Filtrer</Button>
+    <Button type="button" class="btn btn-danger mb-2" @onclick="Clear">Nettoyer</Button>
+
+</div>
         <table class="table table-responsive">
             <thead>
                 <tr>

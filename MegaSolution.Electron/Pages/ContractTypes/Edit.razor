@@ -18,21 +18,21 @@ else if (Model == null)
 }
 else
 {
-    <EditForm Model="Model" OnValidSubmit="EditContractType">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <div class="form-group">
-            <label for="name">Libellé</label>
-            <InputText @bind-Value="Model.ContractTypeName" class="form-control" id="name" />
-        </div>
-      
-        <button class="btn btn-primary" type="submit">
-            <span class="oi oi-pencil"></span>
-            Sauvegarder modification
-        </button>
-        <button @onclick="BackToList" class="btn btn-outline-secondary">
-            <span class="oi oi-media-skip-backward"></span>
-           Revenir sur la liste
-        </button>
-    </EditForm>
+<EditForm Model="Model" OnValidSubmit="EditContractType">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+    <div class="form-group">
+        <label for="name">Libellé</label>
+        <InputText @bind-Value="Model.ContractTypeName" class="form-control" id="name" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Sauvegarder modification
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la liste
+    </button>
+</EditForm>
 }

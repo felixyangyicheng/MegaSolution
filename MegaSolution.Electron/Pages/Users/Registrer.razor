@@ -10,7 +10,7 @@
 <div class="card-body">
     <EditForm Model="Model" OnValidSubmit="HandleRegistration">
         <DataAnnotationsValidator />
-        <ValidationSummary />
+        <Blazorise.ValidationSummary />
         <div class="form-group">
             <label for="email">Adresse email</label>
             <InputText Id="email" class="form-control" @bind-Value="Model.EmailAddress" />

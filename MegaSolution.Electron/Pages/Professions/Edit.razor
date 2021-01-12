@@ -20,22 +20,22 @@ else if (Model == null)
 }
 else
 {
-    <EditForm Model="Model" OnValidSubmit="EditProfession">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-     
-        <div class="form-group">
-            <label for="name">LIbellé</label>
-            <InputNumber @bind-Value="Model.ProfessionName" class="form-control" id="name" />
-        </div>
-     
-        <button class="btn btn-primary" type="submit">
-            <span class="oi oi-pencil"></span>
-            Sauvegarder modification
-        </button>
-        <button @onclick="BackToList" class="btn btn-outline-secondary">
-            <span class="oi oi-media-skip-backward"></span>
-            Revenir sur la liste
-        </button>
-    </EditForm>
+<EditForm Model="Model" OnValidSubmit="EditProfession">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">LIbellé</label>
+        <InputNumber @bind-Value="Model.ProfessionName" class="form-control" id="name" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Sauvegarder modification
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la liste
+    </button>
+</EditForm>
 }

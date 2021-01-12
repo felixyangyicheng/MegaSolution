@@ -13,7 +13,7 @@
 
 <EditForm Model="Model" OnValidSubmit="CreateSector">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="name">Libellé</label>
         <InputText @bind-Value="Model.SectorName" class="form-control" id="name" />

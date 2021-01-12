@@ -18,7 +18,7 @@ else
 {
 <EditForm Model="Model" OnValidSubmit="HandleUpdate">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="firstName">Prénom</label>
         <InputText @bind-Value="Model.FirstName" class="form-control" id="firstName" />

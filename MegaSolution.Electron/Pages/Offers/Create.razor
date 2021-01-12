@@ -14,7 +14,7 @@
 
 <EditForm Model="Model" OnValidSubmit="CreateOffer">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="name">Titre</label>
         <InputText @bind-Value="Model.Title" class="form-control" id="name" />

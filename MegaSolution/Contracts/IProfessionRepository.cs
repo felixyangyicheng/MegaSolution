@@ -8,5 +8,8 @@ namespace MegaSolution.Contracts
 {
     public interface IProfessionRepository:IRepositoryBase<Profession>
     {
+
+        Task<IList<Profession>> Search(string keyword);
+
     }
 }

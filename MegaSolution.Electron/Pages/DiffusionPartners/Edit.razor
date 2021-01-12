@@ -22,7 +22,7 @@ else
 {
 <EditForm Model="Model" OnValidSubmit="EditPartner">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="name">Libellé</label>
         <InputText @bind-Value="Model.DiffusionPartnerName" class="form-control" id="name" />
@@ -37,7 +37,7 @@ else
     </div>
     <div class="form-group">
         <label for="number">Numéro d'adresse</label>
-        <InputNumber @bind-Value="Model.AddressNumber" class="form-control" id="number" />
+        <NumericEdit @bind-Value="Model.AddressNumber" class="form-control" id="number" />
     </div>
     <div class="form-group">
         <label for="phone">Numéro téléphone</label>

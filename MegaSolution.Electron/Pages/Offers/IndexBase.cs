@@ -19,9 +19,22 @@ namespace MegaSolution.Electron.Pages.Offers
 
         protected IList<Offer> Model;
 
+        protected IList<Offer> SearchModel { get; set; }
+
         protected async override Task OnInitializedAsync()
         {
             Model = await _repo.Get(EndPoints.OfferEndpoint);
+        }
+
+        protected async Task Filter()
+        {
+
+        }
+
+        public object selectedSearchValue { get; set; }
+        protected void MySearchHandler(object newValue)
+        {
+            selectedSearchValue = newValue;
         }
     }
 }

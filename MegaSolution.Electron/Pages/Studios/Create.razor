@@ -14,7 +14,7 @@
 
 <EditForm Model="Model" OnValidSubmit="CreateStudio">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="name">Libellé</label>
         <InputText @bind-Value="Model.StudioName" class="form-control" id="name" />

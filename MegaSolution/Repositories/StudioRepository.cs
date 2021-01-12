@@ -62,6 +62,17 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<Studio>> Search(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return await _db.Studios.Where(a => a.StudioName.Contains(keyword)
+                || a.Address.Contains(keyword)
+                || a.City.Contains(keyword)).ToListAsync();
+            }
+            return await _db.Studios.ToListAsync();
+        }
+
         public async Task<bool> Update(Studio entity)
         {
             _db.Studios.Update(entity);

@@ -17,6 +17,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 
 namespace MegaSolution.Electron
 {
@@ -36,7 +39,12 @@ namespace MegaSolution.Electron
             services.AddSingleton<AppData>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-
+            services.AddBlazorise(options =>
+             {
+                 options.ChangeTextOnKeyPress = true; // optional
+             })
+            .AddBootstrapProviders()
+            .AddFontAwesomeIcons();
 
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
@@ -75,6 +83,9 @@ namespace MegaSolution.Electron
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.ApplicationServices
+                .UseBootstrapProviders()
+                .UseFontAwesomeIcons();
 
             app.UseEndpoints(endpoints =>
             {

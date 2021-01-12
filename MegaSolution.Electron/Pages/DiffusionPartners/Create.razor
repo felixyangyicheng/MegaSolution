@@ -14,7 +14,7 @@
 
 <EditForm Model="Model" OnValidSubmit="CreatePartner">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <Blazorise.ValidationSummary />
     <div class="form-group">
         <label for="name">Libellé</label>
         <InputText @bind-Value="Model.DiffusionPartnerName" class="form-control" id="name" />

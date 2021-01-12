@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.Toast.Services;
-using ChartJs.Blazor.Common;
-using ChartJs.Blazor.PieChart;
-using ChartJs.Blazor.Util;
+
 using MegaSolution.Electron.Contracts;
 using MegaSolution.Electron.Models;
 using MegaSolution.Electron.Static;
@@ -47,48 +45,7 @@ namespace MegaSolution.Electron.Pages
         protected int TProfessions;
         protected int TDiffusions;
 
-        protected PieConfig _config;
-        protected override void OnInitialized()
-        {
-            _config = new PieConfig
-            {
-                Options = new PieOptions
-                {
-                    Responsive = true,
-                    Title = new OptionsTitle
-                    {
-                        Display = true,
-                        Text = "ChartJs.Blazor Pie Chart"
-                    }
-                }
-            };
-
-            foreach (string color in new[] { "Artistes", "Offres", "Contrats", "Types", "Studios", "Secteurs", "Professions", "Partenaires" })
-            {
-                _config.Data.Labels.Add(color);
-            }
-
-            PieDataset<int> dataset = new PieDataset<int>(new[] { TArtists, TOffers, TContrats, TTypes, TStudios, TSectors, TProfessions, TDiffusions })
-            {
-                BackgroundColor = new[]
-                {
-                    ColorUtil.ColorHexString(255, 99, 132), // Slice 1 aka "Red"
-                    ColorUtil.ColorHexString(255, 205, 86), // Slice 2 aka "Yellow"
-                    ColorUtil.ColorHexString(75, 192, 192), // Slice 3 aka "Green"
-                    ColorUtil.ColorHexString(54, 162, 235), // Slice 4 aka "Blue"
-                    ColorUtil.ColorHexString(255, 99, 132), // Slice 1 aka "Red"
-                    ColorUtil.ColorHexString(255, 205, 86), // Slice 2 aka "Yellow"
-                    ColorUtil.ColorHexString(75, 192, 192), // Slice 3 aka "Green"
-                    ColorUtil.ColorHexString(54, 162, 235), // Slice 4 aka "Blue"
-        }
-            };
-
-            if (TArtists!=0)
-            {
-
-                _config.Data.Datasets.Add(dataset);
-            }
-        }
+      
         protected async override Task OnInitializedAsync()
         {
             TArtists =await _artistRepository.Count(EndPoints.ArtistCountEndpoint);

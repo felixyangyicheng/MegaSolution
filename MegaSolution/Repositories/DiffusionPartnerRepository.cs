@@ -61,6 +61,18 @@ namespace MegaSolution.Repositories
             return changes > 0;
         }
 
+        public async Task<IList<DiffusionPartner>> Search(string keyword)
+        {
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return await _db.DiffusionPartners.Where(a => a.Address.Contains(keyword)
+                || a.City.Contains(keyword)
+                || a.DiffusionPartnerName.Contains(keyword)).ToListAsync();
+            }
+            return await _db.DiffusionPartners.ToListAsync();
+        }
+
         public async Task<bool> Update(DiffusionPartner entity)
         {
             _db.DiffusionPartners.Update(entity);

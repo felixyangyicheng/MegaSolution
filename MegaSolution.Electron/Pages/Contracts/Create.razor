@@ -12,7 +12,8 @@
 
 <EditForm Model="Model" OnValidSubmit="HandleCreate">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+
+    <Blazorise.ValidationSummary/>
     <div class="form-group">
         <label for="title">Référence</label>
         <InputText @bind-Value="Model.ContractReference" class="form-control" id="title" />
@@ -23,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="duration">Durée (jours)</label>
-        <InputNumber @bind-Value="Model.ContractDuration" class="form-control" id="duration" />
+        <NumericEdit @bind-Value="Model.ContractDuration" class="form-control" id="duration" />
     </div>
     <div class="form-group">
         <label for="type">Type de contrat</label>
