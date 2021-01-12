@@ -21,19 +21,22 @@ namespace MegaSolution.Electron.Pages.Offers
 
         protected IList<Offer> SearchModel { get; set; }
 
+        protected string KeywordFilter = string.Empty;
+
         protected async override Task OnInitializedAsync()
         {
-            Model = await _repo.Get(EndPoints.OfferEndpoint);
+            Model = await _repo.Get(EndPoints.OfferEndpoint + $"search?keyword="+KeywordFilter);
         }
 
         protected async Task Filter()
         {
-
+            OnInitializedAsync();
         }
 
         protected async Task Clear()
         {
-
+            KeywordFilter = string.Empty;
+            OnInitializedAsync();
         }
 
         public object selectedSearchValue { get; set; }
