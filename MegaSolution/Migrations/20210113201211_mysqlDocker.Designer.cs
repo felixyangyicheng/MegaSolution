@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaSolution.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210104184935_MysqlInit")]
-    partial class MysqlInit
+    [Migration("20210113201211_mysqlDocker")]
+    partial class mysqlDocker
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

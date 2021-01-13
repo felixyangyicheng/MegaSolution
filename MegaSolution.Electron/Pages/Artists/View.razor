@@ -1,6 +1,6 @@
 ﻿@page "/artists/view/{Id}"
 @inherits ViewBase
-<h3>View Book Details</h3>
+<h3>Visualiser les détails de l'artiste</h3>
 <hr />
 <br />
 @if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
@@ -13,6 +13,7 @@ else if (Model == null)
 }
 else
 {
+  
     _toastService.ShowInfo($"Vous êtes sur le profil de {Model.FirstName}.{Model.LastName}", "");
 
     <div class="row">

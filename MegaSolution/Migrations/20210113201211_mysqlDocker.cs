@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MegaSolution.Migrations
 {
-    public partial class MysqlInit : Migration
+    public partial class mysqlDocker : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
