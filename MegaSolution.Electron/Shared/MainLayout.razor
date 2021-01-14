@@ -27,45 +27,15 @@
                         <BarItem>
                             <BarDropdown @bind-Visible="uiElementsVisible">
                                 <BarDropdownToggle>
-                                    <BarIcon IconName="IconName.Wrench" />
-                                    UI Elements
+                                    <BarIcon IconName="IconName.Book" />
+                                   Contrats
                                 </BarDropdownToggle>
                                 <BarDropdownMenu>
-                                    <BarDropdownItem To="tests/buttons">
-                                        Buttons
+                                    <BarDropdownItem To="/contracts">
+                                        Liste des contrats
                                     </BarDropdownItem>
-                                    <BarDropdownItem To="tests/modals">
-                                        Modals
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/cards">
-                                        Cards
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/progressbars">
-                                        Progress bars
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/elements">
-                                        General UI
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/typography">
-                                        Typography
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/collapse">
-                                        Collapse
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/tables">
-                                        Tables
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/figures">
-                                        Figures
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/tabs">
-                                        Tabs
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/carousel">
-                                        Carousel
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/layout">
-                                        Layout
+                                    <BarDropdownItem To="/contracttypes">
+                                        Types de contrat
                                     </BarDropdownItem>
                                 </BarDropdownMenu>
                             </BarDropdown>
@@ -136,11 +106,15 @@
                             <BarDropdown>
                                 <BarDropdownToggle>
                                     <BarIcon IconName="IconName.Smartphone" />
-                                    Apps
+                                    Utilisateur
                                 </BarDropdownToggle>
+                                
                                 <BarDropdownMenu>
-                                    <BarDropdownItem To="apps/todo">
-                                        Todo
+                                    <BarDropdownItem To="/registrer">
+                                         S'inscrire
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="/login">
+                                        Se Connecter
                                     </BarDropdownItem>
                                 </BarDropdownMenu>
                             </BarDropdown>

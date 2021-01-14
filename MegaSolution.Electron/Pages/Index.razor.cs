@@ -160,9 +160,10 @@ namespace MegaSolution.Electron.Pages
             {
                 await Task.WhenAll(
                     HandleRedraw(horizontalLineChart, GetLineChartDataset1, GetLineChartDataset2),
-                    HandleRedraw(verticalLineChart, GetLineChartDataset1, GetLineChartDataset2),
-                    HandleRedraw(horizontalBarChart, GetBarChartDataset1),
-                    HandleRedraw(verticalBarChart, GetBarChartDataset2));
+                    HandleRedraw(verticalLineChart, GetLineChartDataset1, GetLineChartDataset2)
+                    //HandleRedraw(horizontalBarChart, GetBarChartDataset1),
+                    //HandleRedraw(verticalBarChart, GetBarChartDataset2)
+                    );
             }
         }
 
