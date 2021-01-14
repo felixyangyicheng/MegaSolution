@@ -46,5 +46,6 @@ namespace MegaSolution.Electron.Pages.Offers
         {
             _navManager.NavigateTo("/offers/");
         }
+
     }
 }

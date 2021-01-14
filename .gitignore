@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+/Logs
+/Blazorise.Bootstrap
+/Blazorise
+/Build
+/Extensions

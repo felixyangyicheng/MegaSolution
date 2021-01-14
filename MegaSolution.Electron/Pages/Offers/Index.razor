@@ -36,13 +36,13 @@ else
     {   <div class="form-inline">
     <Label class="sr-only" for="filter-name">Filter</Label>
     <Autocomplete Data="@Model"
-                  TextField="@((item)=>item.OfferReference)"
-                  ValueField="@((item)=>item.OfferReference)"
+                  TextField="@((item)=>item.Title)"
+                  ValueField="@((item)=>item.OfferId)"
                   SelectedValue="@selectedSearchValue"
                   SelectedValueChanged="@MySearchHandler"
                   Placeholder="Search..." />
-    <Button type="button" class="btn btn-primary mr-sm-2 mb-2" @onclick="Filter">Filtrer</Button>
-    <Button type="button" class="btn btn-danger mb-2" @onclick="Clear">Nettoyer</Button>
+  
+
 
 </div>
         <table class="table table-responsive">

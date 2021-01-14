@@ -37,22 +37,22 @@ namespace MegaSolution
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {   //Sql Server
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
 
             //MySql 
-            services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
-                dbContextOptions
-                .UseMySql(
-                    "Server=localhost;Port=3307;Database=Test;Uid=root;Pwd=123456;",
-                    new MySqlServerVersion(new Version(8, 0, 22)),
-                     mySqlOptions => mySqlOptions
-                            .CharSetBehavior(CharSetBehavior.NeverAppend))
-                            .EnableDetailedErrors()
-                            .EnableSensitiveDataLogging()
-            );
+            //services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
+            //    dbContextOptions
+            //    .UseMySql(
+            //        "Server=localhost;Port=3307;Database=Test;Uid=root;Pwd=123456;",
+            //        new MySqlServerVersion(new Version(8, 0, 22)),
+            //         mySqlOptions => mySqlOptions
+            //                .CharSetBehavior(CharSetBehavior.NeverAppend))
+            //                .EnableDetailedErrors()
+            //                .EnableSensitiveDataLogging()
+            //);
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
