@@ -45,45 +45,7 @@ Statistiques en chartes
         </Card>
     </Column>
 </Row>
-<Row>
-    <Column ColumnSize="ColumnSize.IsHalf.OnWidescreen">
-        <Card Margin="Margin.Is4.OnY">
-            <CardHeader>
-                <CardTitle>Horizontal Bar</CardTitle>
-            </CardHeader>
-            <CardBody>
-                <BarChart @ref="horizontalBarChart" TItem="LiveDataPoint" OptionsObject="@horizontalBarChartOptions">
-                    <ChartStreaming TItem="LiveDataPoint"
-                                    Options="new ChartStreamingOptions { Delay = 2000 }"
-                                    Refreshed="@OnHorizontalBarRefreshed" />
-                </BarChart>
-            </CardBody>
-            <CardFooter>
-                <Button Color="Color.Primary" Outline="true" Clicked="@AddNewHorizontalBarDataSet">Add DataSet</Button>
-                <Button Color="Color.Secondary" Outline="true" Clicked="@AddNewHorizontalBarData">Add Data</Button>
-            </CardFooter>
-        </Card>
-    </Column>
-    <Column ColumnSize="ColumnSize.IsHalf.OnWidescreen">
-        <Card Margin="Margin.Is4.OnY">
-            <CardHeader>
-                <CardTitle>Vertical Bar</CardTitle>
-            </CardHeader>
-            <CardBody>
-                <HorizontalBarChart @ref="verticalBarChart" TItem="LiveDataPoint" OptionsObject="@verticalBarChartOptions">
-                    <ChartStreaming TItem="LiveDataPoint"
-                                    Vertical="true"
-                                    Options="new ChartStreamingOptions { Delay = 2000 }"
-                                    Refreshed="@OnVerticalBarRefreshed" />
-                </HorizontalBarChart>
-            </CardBody>
-            <CardFooter>
-                <Button Color="Color.Primary" Outline="true" Clicked="@AddNewVerticalBarDataSet">Add DataSet</Button>
-                <Button Color="Color.Secondary" Outline="true" Clicked="@AddNewVerticalBarData">Add Data</Button>
-            </CardFooter>
-        </Card>
-    </Column>
-</Row>
+
 
 <button class="nav-link">
     <span class="oi oi-plus" aria-hidden="true"></span>  <Link To="/counter"> Counter </Link>
