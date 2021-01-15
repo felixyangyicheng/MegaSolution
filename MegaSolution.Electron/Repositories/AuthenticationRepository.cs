@@ -80,5 +80,33 @@ namespace MegaSolution.Electron.Repositories
 
             return response.IsSuccessStatusCode;
         }
+
+
+        public async Task<bool> AdminRegister(RegistrationModel user)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post
+                , EndPoints.AdminRegisterEndpoint);
+            request.Content = new StringContent(JsonConvert.SerializeObject(user)
+                , Encoding.UTF8, "application/json");
+
+            var client = _client.CreateClient();
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+        public async Task<bool> PartnerRegister(RegistrationModel user)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post
+                , EndPoints.PartnerRegisterEndpoint);
+            request.Content = new StringContent(JsonConvert.SerializeObject(user)
+                , Encoding.UTF8, "application/json");
+
+            var client = _client.CreateClient();
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            return response.IsSuccessStatusCode;
+        }
     }
 }

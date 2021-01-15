@@ -76,6 +76,16 @@ namespace MegaSolution.Data
                 };
                 await roleManager.CreateAsync(role);
             }
+
+            if (!await roleManager.RoleExistsAsync("Partner"))
+            {
+                var role = new IdentityRole
+                {
+                    Name = "Partner"
+                };
+                await roleManager.CreateAsync(role);
+            }
+
         }
     }
 }

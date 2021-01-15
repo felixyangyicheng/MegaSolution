@@ -17,7 +17,7 @@
                 </BarBrand>
                 <BarMenu>
                     <BarStart>
-                        <BarLabel>Main</BarLabel>
+                        <BarLabel></BarLabel>
                         <BarItem>
                             <BarLink To="">
                                 <BarIcon IconName="IconName.Dashboard" />
@@ -25,96 +25,97 @@
                             </BarLink>
                         </BarItem>
                         <BarItem>
-                            <BarDropdown @bind-Visible="uiElementsVisible">
-                                <BarDropdownToggle>
-                                    <BarIcon IconName="IconName.Book" />
-                                   Contrats
-                                </BarDropdownToggle>
-                                <BarDropdownMenu>
-                                    <BarDropdownItem To="/contracts">
-                                        Liste des contrats
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="/contracttypes">
-                                        Types de contrat
-                                    </BarDropdownItem>
-                                </BarDropdownMenu>
-                            </BarDropdown>
+                            @*<BarDropdown @bind-Visible="uiElementsVisible">*@
+                                <BarDropdown >
+                                    <BarDropdownToggle>
+                                        <BarIcon IconName="IconName.Book" />
+                                            Gestion offre
+                                    </BarDropdownToggle>
+                                    <BarDropdownMenu>
+                                        <BarDropdownItem To="/contracts">
+                                            Liste des contrats
+                                        </BarDropdownItem>
+                                        <BarDropdownItem To="/contracttypes">
+                                            Types de contrat
+                                        </BarDropdownItem>
+                                        <BarDropdownItem To="/offres">
+                                            Listes des offres
+                                        </BarDropdownItem>
+                                    </BarDropdownMenu>
+                                </BarDropdown>
                         </BarItem>
                         <BarItem>
                             <BarDropdown>
                                 <BarDropdownToggle>
                                     <BarIcon IconName="IconName.Edit" />
-                                    Forms
+                                        Profile
                                 </BarDropdownToggle>
                                 <BarDropdownMenu>
-                                    <BarDropdownItem To="tests/forms">
-                                        Forms
+                                    <BarDropdownItem To="studios">
+                                        Studios
                                     </BarDropdownItem>
-                                    <BarDropdownItem To="tests/validations">
-                                        Validations
+                                    <BarDropdownItem To="diffusionpartners">
+                                        Partenaire de diffusion
                                     </BarDropdownItem>
-                                    <BarDropdownItem To="tests/misc-forms">
-                                        Misc
+                                    <BarDropdownItem To="artists">
+                                        Artistes
                                     </BarDropdownItem>
-                                    <BarDropdown>
-                                        <BarDropdownToggle>
-                                            Nested Forms
-                                        </BarDropdownToggle>
-                                        <BarDropdownMenu>
-                                            <BarDropdownItem To="tests/forms">
-                                                Nested Forms
-                                            </BarDropdownItem>
-                                            <BarDropdownItem To="tests/validations">
-                                                Nested Validations
-                                            </BarDropdownItem>
-                                        </BarDropdownMenu>
-                                    </BarDropdown>
+                                  
                                 </BarDropdownMenu>
                             </BarDropdown>
                         </BarItem>
                         <BarItem>
                             <BarDropdown>
                                 <BarDropdownToggle>
-                                    <BarIcon IconName="IconName.PuzzlePiece" />
-                                    Extensions
+                                    <BarIcon IconName="IconName.Indent" />
+                                    Professions
                                 </BarDropdownToggle>
                                 <BarDropdownMenu>
-                                    <BarDropdownItem To="tests/datagrid">
-                                        Data Grid
+                                    <BarDropdownItem To="professions">
+                                        Listes des professsions
                                     </BarDropdownItem>
                                     <BarDropdownItem To="tests/components">
-                                        Components
+                                        Secteur de professsion
                                     </BarDropdownItem>
-                                    <BarDropdownItem To="tests/charts">
-                                        Charts
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/livecharts">
-                                        Live Charts
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/treeview">
-                                        TreeView
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="tests/richtextedit">
-                                        RichTextEdit
-                                    </BarDropdownItem>
+                                   
                                 </BarDropdownMenu>
                             </BarDropdown>
                         </BarItem>
+                        
                     </BarStart>
                     <BarEnd>
                         <BarItem>
                             <BarDropdown>
                                 <BarDropdownToggle>
-                                    <BarIcon IconName="IconName.Smartphone" />
+                                    <BarIcon IconName="IconName.Wrench" />
+                                   Gestion d'accès
+                                </BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem To="">
+                                        Ajout compte de diffusion
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="/adminregistrer">
+                                        Ajout compte d'employé
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>
+                                    <BarIcon IconName="IconName.UserCheck" />
                                     Utilisateur
                                 </BarDropdownToggle>
-                                
+
                                 <BarDropdownMenu>
                                     <BarDropdownItem To="/registrer">
-                                         S'inscrire
+                                        S'inscrire
                                     </BarDropdownItem>
                                     <BarDropdownItem To="/login">
                                         Se Connecter
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="/logout">
+                                        Se déconnecter
                                     </BarDropdownItem>
                                 </BarDropdownMenu>
                             </BarDropdown>
@@ -131,7 +132,7 @@
                     <BarItem>
                         <BarLink To="">
                             <BarIcon IconName="IconName.Dashboard" />
-                            MegaCasting Adlministration
+                            MegaCasting Administration
                         </BarLink>
                     </BarItem>
                 </BarBrand>

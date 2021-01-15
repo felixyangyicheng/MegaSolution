@@ -23,7 +23,7 @@ namespace MegaSolution.Electron.Pages.Users
 
             if (response)
             {
-                _navManager.NavigateTo("/artists/create");
+                _navManager.NavigateTo("/");
             }
 
         }

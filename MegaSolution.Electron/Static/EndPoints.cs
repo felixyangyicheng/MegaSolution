@@ -29,6 +29,8 @@ namespace MegaSolution.Electron.Static
         public static string ProfessionSectorCountEndpoint = ProfessionSectorEndpoint + $"total";
         public static string StudioCountEndpoint = StudioEndpoint + $"total";
 
+
+        public static string PartnerRegisterEndpoint = $"{BaseUrl}api/users/partnerregister/";
         public static string AdminRegisterEndpoint = $"{BaseUrl}api/users/adminregister/";
         public static string RegisterEndpoint = $"{BaseUrl}api/users/register/";
         public static string LoginEndpoint = $"{BaseUrl}api/users/login/";
