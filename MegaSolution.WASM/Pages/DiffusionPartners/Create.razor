@@ -1,0 +1,67 @@
+﻿@page "/diffusionpartners/create/"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits CreateBase
+
+
+<h3 class="card-title">Créer partenaire</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+
+<EditForm Model="Model" OnValidSubmit="CreatePartner">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+    <div class="form-group">
+        <label for="name">Libellé</label>
+        <InputText @bind-Value="Model.DiffusionPartnerName" class="form-control" id="name" />
+    </div>
+    <div class="form-group">
+        <label for="siret">Siret</label>
+        <InputText @bind-Value="Model.Siret" class="form-control" id="siret" />
+    </div>
+    <div class="form-group">
+        <label for="address">Adresse</label>
+        <InputTextArea @bind-Value="Model.Address" class="form-control" id="address" />
+    </div>
+    <div class="form-group">
+        <label for="number">Numéro d'adresse</label>
+        <InputNumber @bind-Value="Model.AddressNumber" class="form-control" id="number" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Numéro téléphone</label>
+        <InputText @bind-Value="Model.Phone" class="form-control" id="phone" />
+    </div>
+    <div class="form-group">
+        <label for="mail">Email</label>
+        <InputText @bind-Value="Model.Email" class="form-control" id="mail" />
+    </div>
+    <div class="form-group">
+        <label for="mailC">Mot de passe</label>
+        <InputText @bind-Value="Model.Password" class="form-control" id="mailC" />
+    </div>
+    <div class="form-group">
+        <label for="pwdConfirm">Confirmer mot de passe</label>
+        <InputText @bind-Value="Model.PasswordConfirm" class="form-control" id="pwdConfirm" />
+    </div>
+    <div class="form-group">
+        <label for="post">Code postal</label>
+        <InputText @bind-Value="Model.PostCode" class="form-control" id="post" />
+    </div>
+    <div class="form-group">
+        <label for="city">Commune</label>
+        <InputText @bind-Value="Model.City" class="form-control" id="city" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Créer partenaire
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la liste
+    </button>
+</EditForm>

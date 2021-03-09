@@ -1,0 +1,84 @@
+﻿@page "/offers/create/"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits CreateBase
+
+
+<h3 class="card-title">Créer offre</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+
+<EditForm Model="Model" OnValidSubmit="CreateOffer">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+    <div class="form-group">
+        <label for="name">Titre</label>
+        <InputText @bind-Value="Model.Title" class="form-control" id="name" />
+    </div>
+    <div class="form-group">
+        <label for="date">Date de publication</label>
+        <InputDate @bind-Value="Model.PublishDate" class="form-control" id="date" />
+    </div>
+    <div class="form-group">
+        <label for="duration">Durée(jour)</label>
+        <InputNumber @bind-Value="Model.OfferDuration" class="form-control" id="duration" />
+    </div>
+    <div class="form-group">
+        <label for="number">Numbre de place</label>
+        <InputNumber @bind-Value="Model.AvailablePlace" class="form-control" id="number" />
+    </div>
+    <div class="form-group">
+        <label for="descriptionO">Description d'offre</label>
+        <InputTextArea @bind-Value="Model.OfferDescription" class="form-control" id="descriptionO" />
+    </div>
+    <div class="form-group">
+        <label for="descriptionP">Description d'offre</label>
+        <InputTextArea @bind-Value="Model.ProfilDescription" class="form-control" id="descriptionP" />
+    </div>
+    <div class="form-group">
+        <label for="location">Localisation</label>
+        <InputText @bind-Value="Model.Location" class="form-control" id="location" />
+    </div>
+    <div class="form-group">
+        <label for="ref">Référence</label>
+        <InputText @bind-Value="Model.OfferReference" class="form-control" id="ref" />
+    </div>
+    <div class="form-group">
+        <label for="profession">Profession</label>
+        <select @bind="Model.ProfessionId" class="form-control" id="profession">
+            <option value="">-- Selectionner profession --</option>
+            @if (Professions != null)
+            {
+                foreach (var profession in Professions)
+                {
+                    <option value="@profession.ProfessionId">@profession.ProfessionName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="studio">Studio</label>
+        <select @bind="Model.StudioId" class="form-control" id="studio">
+            <option value="">-- Selectionner studio --</option>
+            @if (Studios != null)
+            {
+                foreach (var studio in Studios)
+                {
+                    <option value="@studio.StudioId">@studio.StudioName</option>
+                }
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Créer offre
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la lite
+    </button>
+</EditForm>

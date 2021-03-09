@@ -1,0 +1,61 @@
+﻿@page "/professionsectors/"
+@inherits IndexBase
+
+
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des secteur de profession" />
+}
+else
+{
+<AuthorizeView Roles="Administrator">
+    <a href="/professionsectors/create" class="btn btn-primary">
+        <span class="oi oi-plus"></span>
+        Créer un secteur
+    </a>
+    <hr />
+    <br />
+</AuthorizeView>
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun secteur.
+                         Cliquez sur «Créer un studio» pour commencer" />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+                    <th>Opération</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sector in Model)
+                {
+                    <tr>
+                        <td>@sector.ProfessionSectorId</td>
+                        <td>@sector.SectorName</td>
+                        <td>
+                            <a href="/professionsectors/view/@sector.ProfessionSectorId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/professionsectors/edit/@sector.ProfessionSectorId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/professionsectors/delete/@sector.ProfessionSectorId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

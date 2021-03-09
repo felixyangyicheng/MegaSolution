@@ -1,0 +1,31 @@
+﻿@page "/professionsectors/create/"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits CreateBase
+
+<h3 class="card-title">Créer sector de profession</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+
+<EditForm Model="Model" OnValidSubmit="CreateSector">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+    <div class="form-group">
+        <label for="name">Libellé</label>
+        <InputText @bind-Value="Model.SectorName" class="form-control" id="name" />
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Créer secteur de profession
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la lite
+    </button>
+</EditForm>

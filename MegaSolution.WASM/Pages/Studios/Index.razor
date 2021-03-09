@@ -1,0 +1,61 @@
+﻿@page "/studios/"
+@inherits IndexBase
+
+
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des studios" />
+}
+else
+{
+<AuthorizeView Roles="Administrator">
+    <a href="/studios/create" class="btn btn-primary">
+        <span class="oi oi-plus"></span>
+        Créer un studio
+    </a>
+    <hr />
+    <br />
+</AuthorizeView>
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun studio.
+                         Cliquez sur «Créer un studio» pour commencer" />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+                    <th>Opération</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var studio in Model)
+                {
+                    <tr>
+                        <td>@studio.StudioId</td>
+                        <td>@studio.StudioName</td>
+                        <td>
+                            <a href="/studios/view/@studio.StudioId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/studios/edit/@studio.StudioId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/studios/delete/@studio.StudioId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

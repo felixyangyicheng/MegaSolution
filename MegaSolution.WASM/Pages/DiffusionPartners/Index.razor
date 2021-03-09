@@ -1,0 +1,61 @@
+﻿@page "/diffusionpartners/"
+@inherits IndexBase
+
+
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des partenaires de diffusion" />
+}
+else
+{
+<AuthorizeView Roles="Administrator">
+    <a href="/diffusionpartners/create" class="btn btn-primary">
+        <span class="oi oi-plus"></span>
+        Créer un partenaire
+    </a>
+    <hr />
+    <br />
+</AuthorizeView>
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun partenaire.
+                         Cliquez sur «Créer un partenaire» pour commencer" />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+                    <th>Opération</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var partner in Model)
+                {
+                    <tr>
+                        <td>@partner.DiffusionPartnerId</td>
+                        <td>@partner.DiffusionPartnerName</td>
+                        <td>
+                            <a href="/diffusionpartners/view/@partner.DiffusionPartnerId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/diffusionpartners/edit/@partner.DiffusionPartnerId" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/diffusionpartners/delete/@partner.DiffusionPartnerId" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazorise" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Animate" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Bootstrap" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Charts" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Charts.Streaming" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Components" Version="0.9.3" />
+    <PackageReference Include="Blazorise.DataGrid" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Icons.Material" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Material" Version="0.9.3" />
+    <PackageReference Include="Blazorise.RichTextEdit" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Sidebar" Version="0.9.3" />
+    <PackageReference Include="Blazorise.Snackbar" Version="0.9.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="App.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+</Project>

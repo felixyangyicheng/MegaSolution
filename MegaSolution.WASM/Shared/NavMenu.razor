@@ -1,0 +1,155 @@
+﻿@*<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">MegaSolution.WASM</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <button class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </button>
+        </li>
+        <li class="nav-item px-3">
+            <button class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </button>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Registrer">
+                <span class="oi oi-target" aria-hidden="true"></span> S'inscrire
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="logout">
+                <span class="oi oi-account-logout" aria-hidden="true"></span> Se déconnecter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="login">
+                <span class="oi oi-account-login" aria-hidden="true"></span> Se connecter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="login">
+                <span class="oi oi-wrench" aria-hidden="true"></span> Administrer
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="artists">
+                <span class="oi oi-people" aria-hidden="true"></span> Artists
+            </NavLink>
+        
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubmenuContract=!expandSubmenuContract">
+                <span class="oi oi-document" aria-hidden="true"></span> Contrats
+            </NavLink>
+            @if (expandSubmenuContract)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="expand-menu" href="contracts">
+                            <span class="oi oi-file" aria-hidden="true"></span> liste des contrats
+                        </NavLink>
+                        <NavLink class="expand-menu" href="contracttypes">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Types de contrat
+                        </NavLink>
+                    </li>
+                </ul>
+
+            }
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="diffusionpartners" >
+                <span class="oi oi-share-boxed" aria-hidden="true"></span> Partenaire de diffusion
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="offers" >
+                <span class="oi oi-script" aria-hidden="true"></span> Offres
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubmenuProfession=!expandSubmenuProfession">
+                <span class="oi oi-audio-spectrum" aria-hidden="true"></span> Profession
+            </NavLink>
+            @if (expandSubmenuProfession)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="professions" >
+                            <span class="oi oi-audio-spectrum" aria-hidden="true"></span> Professions
+                        </NavLink>
+                        <NavLink class="nav-link" href="professionsectors">
+                            <span class="oi oi-star" aria-hidden="true"></span> Secteurs
+                        </NavLink>
+                    </li>
+                </ul>
+
+            }
+        </li>
+     
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="studios" >
+                <span class="oi oi-camera-slr" aria-hidden="true"></span> Studios
+            </NavLink>
+        </li>
+    </ul>
+</div>*@
+
+
+<Bar Breakpoint="Breakpoint.Desktop"
+     Background="Background.Light"
+     ThemeContrast="ThemeContrast.Light">
+    <BarBrand>
+        Brandname
+    </BarBrand>
+    <BarToggler />
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <BarLink To="#home">Home</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarLink To="#docs">Documentation</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>Dropdown</BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem>Action</BarDropdownItem>
+                        <BarDropdownItem>Another action</BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+        </BarStart>
+        <BarEnd>
+            <BarItem>
+                <Button Color="Color.Primary">Sign up</Button>
+                <Button Color="Color.Secondary">Log in</Button>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private bool expandSubmenuContract; 
+    private bool expandSubmenuProfession;
+
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

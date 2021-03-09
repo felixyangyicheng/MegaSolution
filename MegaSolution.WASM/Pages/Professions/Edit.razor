@@ -1,0 +1,41 @@
+﻿@page "/profession/edit/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits EditBase
+
+<h3 class="card-title">Modifier profession</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Une erreur s'est produite lors de l'opération" />
+}
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement de la profession pour la modification" />
+}
+else
+{
+<EditForm Model="Model" OnValidSubmit="EditProfession">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">LIbellé</label>
+        <InputNumber @bind-Value="Model.ProfessionName" class="form-control" id="name" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        <span class="oi oi-pencil"></span>
+        Sauvegarder modification
+    </button>
+    <button @onclick="BackToList" class="btn btn-outline-secondary">
+        <span class="oi oi-media-skip-backward"></span>
+        Revenir sur la liste
+    </button>
+</EditForm>
+}

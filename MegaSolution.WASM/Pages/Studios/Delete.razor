@@ -1,0 +1,92 @@
+﻿@page "/studios/delete/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inherits DeleteBase
+
+<h3 class="card-title">Êtes-vous sûr de vouloir supprimer cet enregistrement?</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Un problème est survenu lors de l'opération" />
+}
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du studio" />
+}
+else
+{
+    <div class="col-md-4">
+        <table class="table table-responsive">
+            <tr>
+                <td>Libellé</td>
+                <td>@Model.StudioName</td>
+            </tr>
+            <tr>
+                <td>Siret</td>
+                <td>@Model.Siret</td>
+            </tr>
+            <tr>
+                <td>Numéro d'adresse</td>
+                <td>@Model.AddressNumber</td>
+            </tr>
+            <tr>
+                <td>Adresse</td>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <td>Numéro téléphone</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Code postal</td>
+                <td>@Model.PostCode</td>
+            </tr>
+            <tr>
+                <td>Commune</td>
+                <td>@Model.City</td>
+            </tr>
+        </table>
+        <br />
+        @if (Model.Offers == null || Model.Offers.Count < 1)
+        {
+            <div class="alert alert-dismissible alert-secondary">
+                Aucune offre est proposée par ce studio
+            </div>
+        }
+        else
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    <h4>Offres</h4>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var offre in Model.Offers)
+                    {
+                        <li class="list-group-item">@offre.Title - @offre.OfferReference - @offre.PublishDate </li>
+                    }
+                </ul>
+            </div>
+        }
+
+    </div>
+}
+<br />
+
+<button @onclick="DeleteStudio" class="btn btn-danger">
+    <span class="oi oi-delete"></span>
+    Supprimer studio
+</button>
+
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>

@@ -1,0 +1,79 @@
+﻿@page "/contracts/view/{Id}"
+@inherits ViewBase
+
+<h3>Afficher les détails du contrat</h3>
+<hr />
+<br />
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Selection invalide. Veuillez réessayer" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Chargement des détails du contrat" />
+}
+else
+{
+    _toastService.ShowInfo($"Vous êtes sur le contrat {Model.ContractReference}", "");
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <strong>Référence</strong>
+                    </td>
+                    <td>@Model.ContractReference</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>PDF</strong>
+                    </td>
+                    <td>
+                        @if (Model.ContractPdfFile == null)
+                        {
+                            <img src="uploads/no-photo-icon.png" style="height:300px; width:300px" />
+                        }
+                        else
+                        {
+                            <img src="uploads/@Model.ContractPdfFile" style="height:300px; width:300px" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Début</strong>
+                    </td>
+                    <td>@Model.ContractBegins</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Durée</strong>
+                    </td>
+                    <td>@Model.ContractDuration</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Type de contrat</strong>
+                    </td>
+                    <td>@Model.ContractType.ContractTypeName</td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+}
+
+<button @onclick="GoToEdit" class="btn btn-outline-warning">
+    <span class="oi oi-pencil"></span>
+    Modifier contrat
+</button>
+<button @onclick="GoToDelete" class="btn btn-outline-danger">
+    <span class="oi oi-circle-x"></span>
+    Supprimer contrat
+</button>
+<button @onclick="BackToList" class="btn btn-outline-secondary">
+    <span class="oi oi-media-skip-backward"></span>
+    Revenir sur la liste
+</button>
