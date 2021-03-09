@@ -16,12 +16,12 @@ namespace MegaSolution.Data
         }
         private async static Task SeedUsers(UserManager<IdentityUser> userManager)
         {
-            if (await userManager.FindByEmailAsync("admin@meagproduction.com") == null)
+            if (await userManager.FindByEmailAsync("admin@megaproduction.com") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "admin@meagproduction.com",
-                    Email = "admin@meagproduction.com"
+                    UserName = "admin@megaproduction.com",
+                    Email = "admin@megaproduction.com"
                 };
                 var result = await userManager.CreateAsync(user, "P@ssword1");
                 if (result.Succeeded)

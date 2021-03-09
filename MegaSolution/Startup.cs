@@ -46,7 +46,7 @@ namespace MegaSolution
             services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
                 dbContextOptions
                 .UseMySql(
-                    "Server=localhost;Port=3307;Database=Test;Uid=root;Pwd=123456;",
+                    "Server=172.16.1.114;Port=3307;Database=megasolution;Uid=root;Pwd=123456;",
                     new MySqlServerVersion(new Version(8, 0, 22)),
                      mySqlOptions => mySqlOptions
                             .CharSetBehavior(CharSetBehavior.NeverAppend))
