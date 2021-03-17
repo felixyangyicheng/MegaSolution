@@ -21,6 +21,7 @@ namespace MegaSolution.Electron
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseElectron(args); //ElecrtonNet.API
                     webBuilder.UseStartup<Startup>();
                 });
     }
