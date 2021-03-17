@@ -46,7 +46,7 @@ namespace MegaSolution
             services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
                 dbContextOptions
                 .UseMySql(
-                    "Server=172.16.1.114;Port=3307;Database=megasolution;Uid=root;Pwd=123456;",
+                    "Server=localhost;Port=3306;Database=megasolution;Uid=root;Pwd=Not24get;",
                     new MySqlServerVersion(new Version(8, 0, 22)),
                      mySqlOptions => mySqlOptions
                             .CharSetBehavior(CharSetBehavior.NeverAppend))
@@ -57,7 +57,13 @@ namespace MegaSolution
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -118,6 +124,7 @@ namespace MegaSolution
             UserData.Seed(userManager, roleManager).Wait();
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
             app.UseAuthentication();
 
