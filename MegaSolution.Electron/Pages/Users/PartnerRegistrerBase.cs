@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MegaSolution.Electron.Pages.Users
 {
-    public class PartnerRegistrerBase
+    public class PartnerRegistrerBase:ComponentBase
     {
         [Inject]
         public IAuthenticationRepository _authRepo { get; set; }

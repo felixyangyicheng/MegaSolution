@@ -1,12 +1,15 @@
 ﻿@page "/adminregistrer"
 @inherits AdminRegistrerBase
-
+@attribute [Authorize(Roles = "Adminstrator")]
 
 <h3 class="card-title">Ajouter un nouveau compte d'administration</h3>
 @if (!response)
 {
     <ErrorMessage Message="Une erreur s'est produite lors de la tentative d'enregistrement" />
 }
+
+
+
 <div class="card-body">
     <EditForm Model="Model" OnValidSubmit="HandleRegistration">
         <DataAnnotationsValidator />

@@ -84,22 +84,24 @@
                         
                     </BarStart>
                     <BarEnd>
-                        <BarItem>
-                            <BarDropdown>
-                                <BarDropdownToggle>
-                                    <BarIcon IconName="IconName.Wrench" />
-                                   Gestion d'accès
-                                </BarDropdownToggle>
-                                <BarDropdownMenu>
-                                    <BarDropdownItem To="/partnerregistrer">
-                                        Ajout compte de diffusion
-                                    </BarDropdownItem>
-                                    <BarDropdownItem To="/adminregistrer">
-                                        Ajout compte d'employé
-                                    </BarDropdownItem>
-                                </BarDropdownMenu>
-                            </BarDropdown>
-                        </BarItem>
+                        <AuthorizeView Roles="Administrator">
+                            <BarItem>
+                                <BarDropdown>
+                                    <BarDropdownToggle>
+                                        <BarIcon IconName="IconName.Wrench" />
+                                        Gestion d'accès
+                                    </BarDropdownToggle>
+                                    <BarDropdownMenu>
+                                        <BarDropdownItem To="/partnerregistrer">
+                                            Ajout compte de diffusion
+                                        </BarDropdownItem>
+                                        <BarDropdownItem To="/adminregistrer">
+                                            Ajout compte d'employé
+                                        </BarDropdownItem>
+                                    </BarDropdownMenu>
+                                </BarDropdown>
+                            </BarItem>
+                        </AuthorizeView>
                         <BarItem>
                             <BarDropdown>
                                 <BarDropdownToggle>
@@ -112,7 +114,7 @@
                                         S'inscrire
                                     </BarDropdownItem>
                                     <BarDropdownItem To="/login">
-                                        Se Connecter
+                                        Se connecter
                                     </BarDropdownItem>
                                     <BarDropdownItem To="/logout">
                                         Se déconnecter
