@@ -21,7 +21,16 @@
 #ENTRYPOINT ["dotnet", "MegaSolution.dll"]
 
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim
+FROM microsoft/dotnet:5.0-sdk AS build
+COPY MegaSolution/*.csproj ./app/MegaSolution/
+WORKDIR /app/MegaSolution
+RUN dotnet restore
+
+COPY MegaSolution/. ./
+RUN dotnet publish -o out /p:PublishWithAspNetCoreTargetManifest="false"
+
+FROM microsoft/dotnet:5.0-runtime AS runtime
+#ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
 COPY --from=build /app/MegaSolution/out ./
 ENTRYPOINT ["dotnet", "MegaSolution.dll"]
