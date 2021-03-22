@@ -90,10 +90,10 @@ namespace MegaSolution.Electron
                 endpoints.MapFallbackToPage("/_Host");
             });
 
-            ElectronBootStrap();
+            ElectronBootStrap(); // atjouté pour ElectronNET.API
         }
         
-        void ElectronBootStrap()
+        void ElectronBootStrap()// atjouté pour ElectronNET.API
         {
             Task.Run(async () => await ElectronNET.API.Electron.WindowManager.CreateWindowAsync());
         }

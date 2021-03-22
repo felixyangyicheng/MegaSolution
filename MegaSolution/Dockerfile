@@ -2,8 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
@@ -20,3 +19,24 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MegaSolution.dll"]
+
+
+## https://hub.docker.com/_/microsoft-dotnet
+#FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+#WORKDIR /source
+#
+## copy csproj and restore as distinct layers
+#COPY *.sln .
+#COPY aspnetapp/*.csproj ./aspnetapp/
+#RUN dotnet restore
+#
+## copy everything else and build app
+#COPY aspnetapp/. ./aspnetapp/
+#WORKDIR /source/aspnetapp
+#RUN dotnet publish -c release -o /app --no-restore
+#
+## final stage/image
+#FROM mcr.microsoft.com/dotnet/aspnet:5.0
+#WORKDIR /app
+#COPY --from=build /app ./
+#ENTRYPOINT ["dotnet", "MegaSolution.dll"]
