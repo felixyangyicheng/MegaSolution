@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["MegaSolution/MegaSolution.csproj", "MegaSolution/"]
-RUN dotnet restore "MegaSolution/MegaSolution.csproj"
+COPY ["./MegaSolution.csproj", "./"]
+RUN dotnet restore "./MegaSolution.csproj"
 COPY . .
 WORKDIR "/src/MegaSolution"
 RUN dotnet build "MegaSolution.csproj" -c Release -o /app/build
