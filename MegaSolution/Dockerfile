@@ -22,7 +22,8 @@
 
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
-COPY MegaSolution/*.csproj ./app/MegaSolution/
+WORKDIR /src
+COPY ["MegaSolution/MegaSolution.csproj", "MegaSolution/"]
 WORKDIR /app/MegaSolution
 RUN dotnet restore
 
