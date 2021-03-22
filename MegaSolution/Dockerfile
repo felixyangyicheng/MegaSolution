@@ -21,7 +21,7 @@
 #ENTRYPOINT ["dotnet", "MegaSolution.dll"]
 
 
-FROM microsoft/dotnet:5.0-sdk AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 COPY MegaSolution/*.csproj ./app/MegaSolution/
 WORKDIR /app/MegaSolution
 RUN dotnet restore
