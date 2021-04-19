@@ -20,7 +20,9 @@ namespace MegaSolution
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    //.UseUrls("http://*:3000")
+                   .UseStartup<Startup>();
                 });
     }
 }

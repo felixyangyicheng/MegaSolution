@@ -45,6 +45,15 @@ namespace MegaSolution.Electron
             .AddBootstrapProviders()
             .AddFontAwesomeIcons();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+                  //  .AllowCredentials());
+            });
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
             services.AddHttpClient();
@@ -73,10 +82,10 @@ namespace MegaSolution.Electron
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
+                //app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -89,9 +98,11 @@ namespace MegaSolution.Electron
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
-
+            app.UseCors("CorsPolicy");
             ElectronBootStrap();
         }
+
+
         
         void ElectronBootStrap()
         {
