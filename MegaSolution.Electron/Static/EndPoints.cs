@@ -7,12 +7,10 @@ namespace MegaSolution.Electron.Static
 {
     public class EndPoints
     {
-#if DEBUG
-         public static string BaseUrl = "https://localhost:44321/";
-#else    
+ 
 
-         public static string BaseUrl = "https://172.16.1.114:8080/";
-#endif
+         public static string BaseUrl = "http://172.16.1.115/";
+        //public static string BaseUrl = "http://localhost:5000/";
 
         public static string ArtistEndpoint = $"{BaseUrl}api/artists/";
         public static string ContractEndpoint = $"{BaseUrl}api/contracts/";

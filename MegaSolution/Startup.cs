@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,9 @@ namespace MegaSolution
             services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
                 dbContextOptions
                 .UseMySql(
-                    "Server=localhost;Port=3306;Database=megasolution;Uid=root;Pwd=Not24get;",
+                    "Server=172.16.1.114;Port=3307;Database=mysql-megasolution;Uid=root;Pwd=123456;",
+                    //"Server=localhost;Port=3307;Database=megasolution;Uid=root;Pwd=123456;",
+
                     new MySqlServerVersion(new Version(8, 0, 22)),
                      mySqlOptions => mySqlOptions
                             .CharSetBehavior(CharSetBehavior.NeverAppend))
@@ -110,9 +113,19 @@ namespace MegaSolution
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders=ForwardedHeaders.XForwardedFor| ForwardedHeaders.XForwardedProto
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MegaSolution v1"));
+            }
+            else
+            {
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MegaSolution v1"));
             }

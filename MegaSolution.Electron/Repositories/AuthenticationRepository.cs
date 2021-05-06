@@ -37,7 +37,7 @@ namespace MegaSolution.Electron.Repositories
             request.Content = new StringContent(JsonConvert.SerializeObject(user)
                 , Encoding.UTF8, "application/json");
 
-            var client = _client.CreateClient();
+            var client = _client.CreateClient("test");
             HttpResponseMessage response = await client.SendAsync(request);
 
             if (!response.IsSuccessStatusCode)
