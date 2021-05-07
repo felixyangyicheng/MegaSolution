@@ -47,8 +47,8 @@ namespace MegaSolution
             services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
                 dbContextOptions
                 .UseMySql(
-                    "Server=172.16.1.114;Port=3307;Database=mysql-megasolution;Uid=root;Pwd=123456;",
-                    //"Server=localhost;Port=3307;Database=megasolution;Uid=root;Pwd=123456;",
+                    //"Server=172.16.1.114;Port=3306;Database=mysql-megasolution;Uid=root;Pwd=123456;",
+                    "Server=localhost;Port=3307;Database=megasolution;Uid=root;Pwd=123456;",
 
                     new MySqlServerVersion(new Version(8, 0, 22)),
                      mySqlOptions => mySqlOptions
@@ -57,7 +57,7 @@ namespace MegaSolution
                             .EnableSensitiveDataLogging()
             );
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddCors(o =>
@@ -110,7 +110,7 @@ namespace MegaSolution
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager,
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
 
