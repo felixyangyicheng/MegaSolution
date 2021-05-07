@@ -9,7 +9,7 @@ namespace MegaSolution.Data
     public class UserData
     {
         public async static Task Seed(UserManager<ApplicationUser> userManager,
-           RoleManager<IdentityRole> roleManager)
+           RoleManager<IdentityRole> roleManager) //Added 07/05/2021 evo ArtistProfile IdentityUser -> ApplicationUser
         {
             await SeedRoles(roleManager);
             await SeedUsers(userManager);

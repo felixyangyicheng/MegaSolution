@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace MegaSolution.Data
 {
-    public class ApplicationUser:IdentityUser
+    public class ApplicationUser: IdentityUser //Added 07/05/2021 evo ArtistProfile
     {
         public virtual IList<Artist> Artists { get; set; }
         public virtual IList<DiffusionPartner> DiffusionPartners { get; set; }
-
-        //public virtual ICollection<IdentityUser<string>> User { get; set; }
       
     }
 }

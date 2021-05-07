@@ -57,7 +57,7 @@ namespace MegaSolution
                             .EnableSensitiveDataLogging()
             );
 
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddDefaultIdentity<ApplicationUser>()  //Added 07/05/2021 evo ArtistProfile
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddCors(o =>
