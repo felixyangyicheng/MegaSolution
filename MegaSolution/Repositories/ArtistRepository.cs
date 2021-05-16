@@ -78,5 +78,15 @@ namespace MegaSolution.Repositories
             _db.Artists.Update(entity);
             return await Save();
         }
+
+        public async Task<IList<Artist>> FindArtistsByUserId(string userId) // 16/05/2021 Obtain UserId
+        {
+            return await _db.Artists
+                .Include(s => s.ApplicationUser)
+                .Where(s => s.ApplicationUserId == userId)
+                .ToListAsync();
+        }
+
+     
     }
 }

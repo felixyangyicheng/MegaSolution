@@ -31,6 +31,10 @@ namespace MegaSolution.Data
         public Gender Gender { get; set; }
         public string CV { get; set; }
 
+       
+
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }//Added 07/05/2021 evo ArtistProfile
     }
 }

@@ -98,13 +98,13 @@ namespace MegaSolution.Electron
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
-<<<<<<< HEAD
+
 
             ElectronBootStrap(); // atjouté pour ElectronNET.API
-=======
+
             app.UseCors("CorsPolicy");
             ElectronBootStrap();
->>>>>>> 1256a950d066fd6fcc57fc553a444826bdbeb59f
+
         }
 
 

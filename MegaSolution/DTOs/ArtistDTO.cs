@@ -26,6 +26,9 @@ namespace MegaSolution.DTOs
         public string ArtistName { get; set; }
         public Gender Gender { get; set; }
         public string CV { get; set; }
+        public string ApplicationUserId { get; set; }//Added 16/05/2021 evo ArtistProfile
+        public virtual ApplicationUser ApplicationUser { get; set; }//Added 16/05/2021 evo ArtistProfile
+
     }
     public class ArtistCreateDTO
     {
@@ -48,6 +51,9 @@ namespace MegaSolution.DTOs
         public string ArtistName { get; set; }
         public Gender Gender { get; set; }
         public string CV { get; set; }
+
+        public string ApplicationUserId { get; set; }//Added 16/05/2021 evo Obtain userId
+
     }
     public class ArtistUpdateDTO
     {
@@ -70,5 +76,6 @@ namespace MegaSolution.DTOs
         public string ArtistName { get; set; }
         public Gender Gender { get; set; }
         public string CV { get; set; }
+        public string ApplicationUserId { get; set; }//Added 16/05/2021 evo Obtain userId
     }
 }

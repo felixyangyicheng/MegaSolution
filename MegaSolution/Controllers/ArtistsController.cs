@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MegaSolution.Controllers
@@ -20,13 +21,15 @@ namespace MegaSolution.Controllers
         private readonly IArtistRepository _artistRepository;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
-
+        private readonly IHttpContextAccessor _httpContextAccessor; //Added 16/05/2021 evo Obtain UserId
         public ArtistsController(IArtistRepository artistRepository,
-            ILoggerService logger, IMapper mapper)
+            ILoggerService logger, IMapper mapper, IHttpContextAccessor httpContextAccessor) //"IHttpContextAccessor httpContextAccessor " Added 16/05/2021 evo Obtain UserId
         {
             _artistRepository = artistRepository;
             _logger = logger;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor; //Added 16/05/2021 evo Obtain UserId
+
         }
 
         #region Get count
@@ -52,6 +55,72 @@ namespace MegaSolution.Controllers
             }
         }
         #endregion
+
+        #region Get Artist by userId
+        [HttpGet("{current}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetArtistsOfCurrentUser() //added 16/05/2021 obtain user id
+        {
+            var location = GetControllerActionNames();
+
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            try
+            {
+                _logger.LogInfo($"{location}: Attempted Call");
+                var artists = await _artistRepository.FindArtistsByUserId(userId);
+                var response = _mapper.Map<IList<ArtistDTO>>(artists);
+                _logger.LogInfo($"{location}: Successful");
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+     
+        }
+        #endregion
+
+
+        #region Create Artist for current user
+        [HttpPost("current")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+        public async Task<IActionResult> CreateForCurrentUser([FromBody] ArtistCreateDTO artistDTO)//added 16/05/2021 obtain user id
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.LogInfo($"{location}: Create Attempted");
+                if (artistDTO == null)
+                {
+                    _logger.LogWarn($"{location}: Empty Request was submitted");
+                    return BadRequest(ModelState);
+                }
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogWarn($"{location}: Data was Incomplete");
+                    return BadRequest(ModelState);
+                }
+                var artist = _mapper.Map<Artist>(artistDTO);
+                var isSuccess = await _artistRepository.Create(artist);
+                if (!isSuccess)
+                {
+                    return InternalError($"{location}: Creation failed");
+                }
+                _logger.LogInfo($"{location}: Creation was successful");
+                return Created("Create", new { artist });
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+        }
+        #endregion
+
+
 
         #region Get all
         /// <summary>
