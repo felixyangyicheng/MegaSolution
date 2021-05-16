@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MegaSolution.Data
 {
-    public class ApplicationDbContext:IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext:IdentityDbContext<ApplicationUser> //Added 07/05/2021 evo ArtistProfile
     {
 
         public DbSet<Artist> Artists { get; set; }
