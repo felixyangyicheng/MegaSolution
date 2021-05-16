@@ -3,14 +3,16 @@ using System;
 using MegaSolution.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MegaSolution.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210507115755_ApplicationUser")]
+    partial class ApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,6 +124,9 @@ namespace MegaSolution.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ProfilePhoto")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UsersId")
                         .HasColumnType("longtext");
 
                     b.HasKey("ArtistId");
@@ -414,6 +419,9 @@ namespace MegaSolution.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<string>("ClaimType")
                         .HasColumnType("longtext");
 
@@ -425,6 +433,8 @@ namespace MegaSolution.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -441,6 +451,9 @@ namespace MegaSolution.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
 
@@ -449,6 +462,8 @@ namespace MegaSolution.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -463,7 +478,12 @@ namespace MegaSolution.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("RoleId");
 
@@ -483,10 +503,15 @@ namespace MegaSolution.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("AspNetUserTokens");
                 });
@@ -560,6 +585,10 @@ namespace MegaSolution.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("MegaSolution.Data.ApplicationUser", null)
+                        .WithMany("Claims")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("MegaSolution.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -569,6 +598,10 @@ namespace MegaSolution.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("MegaSolution.Data.ApplicationUser", null)
+                        .WithMany("Logins")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("MegaSolution.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -577,6 +610,10 @@ namespace MegaSolution.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
+                    b.HasOne("MegaSolution.Data.ApplicationUser", null)
+                        .WithMany("UserRoles")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -593,6 +630,10 @@ namespace MegaSolution.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.HasOne("MegaSolution.Data.ApplicationUser", null)
+                        .WithMany("Tokens")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("MegaSolution.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -603,7 +644,15 @@ namespace MegaSolution.Migrations
                 {
                     b.Navigation("Artists");
 
+                    b.Navigation("Claims");
+
                     b.Navigation("DiffusionPartners");
+
+                    b.Navigation("Logins");
+
+                    b.Navigation("Tokens");
+
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("MegaSolution.Data.ContractType", b =>

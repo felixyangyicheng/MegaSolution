@@ -8,17 +8,17 @@ namespace MegaSolution.Data
 {
     public class UserData
     {
-        public async static Task Seed(UserManager<IdentityUser> userManager,
-           RoleManager<IdentityRole> roleManager)
+        public async static Task Seed(UserManager<ApplicationUser> userManager,
+           RoleManager<IdentityRole> roleManager) //Added 07/05/2021 evo ArtistProfile IdentityUser -> ApplicationUser
         {
             await SeedRoles(roleManager);
             await SeedUsers(userManager);
         }
-        private async static Task SeedUsers(UserManager<IdentityUser> userManager)
+        private async static Task SeedUsers(UserManager<ApplicationUser> userManager)
         {
             if (await userManager.FindByEmailAsync("admin@megaproduction.com") == null)
             {
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = "admin@megaproduction.com",
                     Email = "admin@megaproduction.com"
@@ -31,7 +31,7 @@ namespace MegaSolution.Data
             }
             if (await userManager.FindByEmailAsync("customer1@gmail.com") == null)
             {
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = "customer1@gmail.com",
                     Email = "customer1@gmail.com"
@@ -44,7 +44,7 @@ namespace MegaSolution.Data
             }
             if (await userManager.FindByEmailAsync("customer2@gmail.com") == null)
             {
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = "customer2@gmail.com",
                     Email = "customer2@gmail.com"

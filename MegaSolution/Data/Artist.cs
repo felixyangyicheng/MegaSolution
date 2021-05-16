@@ -10,6 +10,7 @@ namespace MegaSolution.Data
     [Table("Artists")]
     public class Artist
     {
+        [Key]
         public int ArtistId { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 2)]
@@ -29,5 +30,7 @@ namespace MegaSolution.Data
         public string ArtistName { get; set; }
         public Gender Gender { get; set; }
         public string CV { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }//Added 07/05/2021 evo ArtistProfile
     }
 }
