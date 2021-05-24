@@ -43,6 +43,10 @@ namespace MegaSolution.Mappings
             CreateMap<Studio, StudioDTO>().ReverseMap();
             CreateMap<Studio, StudioCreateDTO>().ReverseMap();
             CreateMap<Studio, StudioUpdateDTO>().ReverseMap();
+
+            CreateMap<Profile, ArtistProfileDTO>();
+
+            CreateMap<LineOffer, LineOfferDTO>();
         }
     }
 }

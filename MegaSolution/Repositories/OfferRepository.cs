@@ -28,6 +28,12 @@ namespace MegaSolution.Repositories
             return await Save();
         }
 
+        public async Task CreateArtistProfile(ArtistProfile profile)
+        {
+            await _db.Carts.AddAsync(profile);
+            await Save();
+        }
+
         public async Task<bool> Delete(Offer entity)
         {
             _db.Offers.Remove(entity);
@@ -50,6 +56,16 @@ namespace MegaSolution.Repositories
                 .Include(q => q.Studio)
                 .FirstOrDefaultAsync(q => q.OfferId == id);
             return offer;
+        }
+
+        public async  Task<ArtistProfile> GetArtistProfileByUserId(string userId)
+        {
+            return await _db.Carts
+                  .Include(s => s.User)
+                  .Include(s => s.LineOffers)
+                  .ThenInclude(li => li.Offer)
+                  .Where(s => s.UserId == userId)
+                  .FirstOrDefaultAsync();
         }
 
         public async Task<bool> isExists(int id)

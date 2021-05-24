@@ -9,7 +9,8 @@ namespace MegaSolution.Data
 {
     public class ApplicationDbContext:IdentityDbContext<ApplicationUser> //Added 07/05/2021 evo ArtistProfile
     {
-
+        public DbSet<ArtistProfile> Carts { get; set; }
+        public DbSet<LineOffer> LineOffers { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<ContractType> ContractTypes { get; set; }

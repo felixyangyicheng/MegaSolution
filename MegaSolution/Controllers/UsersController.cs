@@ -26,15 +26,17 @@ namespace MegaSolution.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILoggerService _logger;
         private readonly IConfiguration _config;
+        private readonly IOfferRepository _offerRepository;
         public UsersController(SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             ILoggerService logger,
-            IConfiguration config)
+            IConfiguration config, IOfferRepository offerRepository)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
             _config = config;
+            _offerRepository = offerRepository;
         }
         /// <summary>
         /// USer Registration Endpoint
@@ -53,6 +55,9 @@ namespace MegaSolution.Controllers
                 _logger.LogInfo($"{location}: Registration Attempt for {username} ");
                 var user = new ApplicationUser { Email = username, UserName = username };
                 var result = await _userManager.CreateAsync(user, password);
+               
+
+
 
                 if (!result.Succeeded)
                 {
@@ -63,6 +68,12 @@ namespace MegaSolution.Controllers
                     return InternalError($"{location}: {username} User Registration Attempt Failed");
                 }
                 await _userManager.AddToRoleAsync(user, "Customer");
+                var ap = new ArtistProfile()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id
+                };
+                await _offerRepository.CreateArtistProfile(ap);
                 return Created("login", new { result.Succeeded });
             }
             catch (Exception e)

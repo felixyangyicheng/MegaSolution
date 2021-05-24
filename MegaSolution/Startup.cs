@@ -48,7 +48,7 @@ namespace MegaSolution
                 dbContextOptions
                 .UseMySql(
                     //"Server=172.16.1.114;Port=3306;Database=mysql-megasolution;Uid=root;Pwd=123456;",
-                    "Server=localhost;Port=3306;Database=megasolution;Uid=root;Pwd=123456;",
+                    "Server=192.168.1.45;Port=3306;Database=megasolution;Uid=app;Pwd=123456;",
 
                     new MySqlServerVersion(new Version(8, 0, 22)),
                      mySqlOptions => mySqlOptions

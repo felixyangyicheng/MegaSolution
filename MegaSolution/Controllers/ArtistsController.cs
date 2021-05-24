@@ -2,6 +2,7 @@
 using MegaSolution.Contracts;
 using MegaSolution.Data;
 using MegaSolution.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -57,7 +58,7 @@ namespace MegaSolution.Controllers
         #endregion
 
         #region Get Artist by userId
-        [HttpGet("{current}")]
+        [HttpGet("/api/Artists/user/{current}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetArtistsOfCurrentUser() //added 16/05/2021 obtain user id
